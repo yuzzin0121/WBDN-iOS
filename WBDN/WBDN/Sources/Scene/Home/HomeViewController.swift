@@ -68,7 +68,7 @@ final class HomeViewController: UIViewController {
     private let recommendationButton = UIButton().then {
         $0.backgroundColor = .customYellow
         $0.setTitle("추천", for: .normal)
-        $0.titleLabel?.font = .boldSystemFont(ofSize: 17)
+        $0.titleLabel?.font = .pretendard(size: 17, weight: .bold)
         $0.setTitleColor(.black, for: .normal)
         $0.layer.cornerRadius = 20
     }

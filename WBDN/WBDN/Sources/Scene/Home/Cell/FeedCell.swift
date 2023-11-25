@@ -21,13 +21,13 @@ final class FeedCell: UICollectionViewCell {
     }
 
     private let starCountLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 13, weight: .semibold)
+        $0.font = .pretendard(size: 13, weight: .semiBold)
         $0.text = "0"
         $0.textColor = .customGray
     }
 
     private let nicknameLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 13, weight: .semibold)
+        $0.font = .pretendard(size: 13, weight: .semiBold)
         $0.text = "닉네임"
         $0.textColor = .white
     }
