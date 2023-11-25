@@ -26,6 +26,8 @@
 		E5CF42572B11DE6600A20D28 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF42562B11DE6600A20D28 /* MapViewController.swift */; };
 		E5CF42592B11DE7000A20D28 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF42582B11DE7000A20D28 /* UserViewController.swift */; };
 		E5CF42612B11ED2D00A20D28 /* UIViewController+Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF42602B11ED2D00A20D28 /* UIViewController+Background.swift */; };
+		E5CF42642B1208C500A20D28 /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF42632B1208C400A20D28 /* PinterestLayout.swift */; };
+		E5CF42672B120E7A00A20D28 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF42662B120E7A00A20D28 /* FeedCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		E5CF42562B11DE6600A20D28 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E5CF42582B11DE7000A20D28 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		E5CF42602B11ED2D00A20D28 /* UIViewController+Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Background.swift"; sourceTree = "<group>"; };
+		E5CF42632B1208C400A20D28 /* PinterestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
+		E5CF42662B120E7A00A20D28 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 		E5CF42332B11CE5400A20D28 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				E5CF42622B12089400A20D28 /* Common */,
 				E5CF42362B11CE6500A20D28 /* MainTab */,
 				E5CF42532B11DDEE00A20D28 /* Home */,
 				E5CF42542B11DDF000A20D28 /* Map */,
@@ -168,6 +173,7 @@
 		E5CF42532B11DDEE00A20D28 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				E5CF42652B120E6B00A20D28 /* Cell */,
 				E5CF42222B11C3F200A20D28 /* HomeViewController.swift */,
 			);
 			path = Home;
@@ -204,6 +210,22 @@
 				E5CF42602B11ED2D00A20D28 /* UIViewController+Background.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E5CF42622B12089400A20D28 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E5CF42632B1208C400A20D28 /* PinterestLayout.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		E5CF42652B120E6B00A20D28 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E5CF42662B120E7A00A20D28 /* FeedCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,10 +312,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5CF42642B1208C500A20D28 /* PinterestLayout.swift in Sources */,
 				E5CF42232B11C3F200A20D28 /* HomeViewController.swift in Sources */,
 				E5CF42572B11DE6600A20D28 /* MapViewController.swift in Sources */,
 				6133F3422B11EC51001B7D08 /* CustomAnnotationView.swift in Sources */,
 				E5CF42592B11DE7000A20D28 /* UserViewController.swift in Sources */,
+				E5CF42672B120E7A00A20D28 /* FeedCell.swift in Sources */,
 				E5CF42502B11D6B800A20D28 /* WoobamAPI.swift in Sources */,
 				E5CF42522B11D98300A20D28 /* MainTabController.swift in Sources */,
 				E5CF421F2B11C3F200A20D28 /* AppDelegate.swift in Sources */,
