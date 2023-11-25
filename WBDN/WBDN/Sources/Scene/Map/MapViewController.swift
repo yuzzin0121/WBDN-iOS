@@ -53,8 +53,7 @@ class MapViewController: UIViewController {
     // 현재 지도의 중심 위치 + 스케일
     private var mapCurrentLocation: MKCoordinateRegion?
     
-    private var searchCompleter = MKLocalSearchCompleter() /// 검색을 도와주는 변수
-    private var searchResults = [MKLocalSearchCompletion]() /// 검색 결과를 담는 변수
+//    var postLocations: [PostLocation] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +67,24 @@ class MapViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(searchBtnDidTap(_:)))
         searchBtnView.addGestureRecognizer(tapGesture)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        // 서버에서 받아오기
+        Task {
+            let response = try await NetworkService.shared.request(.getPostMaps, type:  BaseResponse<[PostLocation]>.self)
+            
+            guard let postLocations = response.result else { return }
+            
+            await MainActor.run(body: {
+                addAnnotations(postLocations: postLocations)
+            })
+            
+        }
+    }
+    var latitude: Double = 0
+    var longitude: Double = 0
 
     // MARK: View
     func setUpView() {
@@ -150,11 +167,18 @@ class MapViewController: UIViewController {
     }
     
     // MARK: - MapView에 Annotation 추가
-    private func addAnnotations() {
+    private func addAnnotations(postLocations: [PostLocation]) {
         // annotation의 위치 설정
-//        let annotation = CustomAnnotation(coordinate: ")
-//
-//        // annotation 이미지 이름 설정
+        
+        postLocations.map { postLocation in
+            CustomAnnotation(coordinate: .init(latitude: postLocation.latitude, longitude: postLocation.longitude))
+        }.forEach { annotation in
+            annotation.imageName = "pin"
+            mapView.addAnnotation(annotation)
+        }
+        
+
+        // annotation 이미지 이름 설정
 //        annotation.imageName = "pin"
 //        mapView.addAnnotation(annotation)
     }
@@ -178,6 +202,8 @@ extension MapViewController: CLLocationManagerDelegate {
         if let location = locations.first {
             let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
             let region = MKCoordinateRegion(center: location.coordinate, span: span)
+            latitude = location.coordinate.latitude
+            longitude = location.coordinate.longitude
             mapView.setRegion(region, animated: true)
             addUserAnnotation(coordinate: location.coordinate)
             

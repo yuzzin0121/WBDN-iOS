@@ -55,3 +55,16 @@ struct PostLikeResDto: Codable {
     let memberId: Int
     let postId: Int
 }
+
+struct PostLocation: Codable {
+    let postId: Int
+    let nickname: String
+    let photoUrl: String
+    let likes: Int
+    let latitude: Double
+    let longitude: Double
+}
+
+
+
+

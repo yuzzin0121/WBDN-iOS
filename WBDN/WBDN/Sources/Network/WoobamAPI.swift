@@ -18,8 +18,12 @@ enum WoobamAPI {
     case signIn(dto: SignInDto)
 
     /// getPosts:
-    /// 응답 타입: BaseResponse<PostListResDto>
+    /// 응답 타입: BaseResponse<PostLocation>
     case getPosts
+    
+    /// getPostMaps:
+    /// 응답 타입: BaseResponse<PostMapsDto>
+    case getPostMaps
 
     /// createPost:
     /// 응답 타입: BaseResponse<CreatePostDto>
@@ -75,6 +79,8 @@ extension WoobamAPI: TargetType {
             return "/api/posts"
         case .getPosts:
             return "/api/posts"
+        case .getPostMaps:
+            return "/api/posts/maps"
         case .saveLike(let postId):
             return "/api/posts/\(postId)/likes"
         case .getComments(let postId):
@@ -100,7 +106,7 @@ extension WoobamAPI: TargetType {
         switch self {
         case .signUp, .signIn, .createPost, .postComment, .postReply:
             return .post
-        case .saveLike, .getComments, .getReplies, .findPostDetail, .getPosts:
+        case .saveLike, .getComments, .getReplies, .findPostDetail, .getPosts, .getPostMaps:
             return .get
         case .deletePost, .deleteReply, .deleteComment:
             return .delete
@@ -129,6 +135,9 @@ extension WoobamAPI: TargetType {
             }
             multipartData.append(MultipartFormData(provider: .data(photoData), name: "photo"))
             return .uploadMultipart(multipartData)
+        
+        case let .getPostMaps:
+            return .requestPlain
 
         case .saveLike:
             return .requestPlain
