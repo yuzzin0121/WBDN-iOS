@@ -118,6 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				610DB5192B127D1700BE0B4C /* PhotoInfoViewController.swift */,
+				884729FF2B125F510073AE61 /* PhotoInfo2ViewController.swift */,
+				884729FD2B12500D0073AE61 /* AddImageViewController.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -278,8 +280,6 @@
 				610DB5182B127CFC00BE0B4C /* Post */,
 				E5CF42652B120E6B00A20D28 /* Cell */,
 				E5CF42222B11C3F200A20D28 /* HomeViewController.swift */,
-				884729FD2B12500D0073AE61 /* AddImageViewController.swift */,
-				884729FF2B125F510073AE61 /* PhotoInfo2ViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
