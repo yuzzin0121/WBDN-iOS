@@ -13,7 +13,7 @@ extension UIViewController {
         gradientLayer.frame = view.bounds
 
         // TODO: 색상 변경
-        gradientLayer.colors = [UIColor.appSub.cgColor, UIColor.mainNavy.cgColor]
+        gradientLayer.colors = [UIColor.customGray.cgColor, UIColor.customNavy.cgColor]
         gradientLayer.locations = [0.0, 1.0]
 
         // 그레디언트 방향 설정 (위에서 아래로)

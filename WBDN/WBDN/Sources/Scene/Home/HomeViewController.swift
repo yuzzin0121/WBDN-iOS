@@ -66,20 +66,16 @@ final class HomeViewController: UIViewController {
     }
 
     private let recommendationButton = UIButton().then {
-        $0.backgroundColor = .main
+        $0.backgroundColor = .customYellow
         $0.setTitle("추천", for: .normal)
         $0.titleLabel?.font = .boldSystemFont(ofSize: 17)
         $0.setTitleColor(.black, for: .normal)
         $0.layer.cornerRadius = 20
     }
 
-    // private let floatingButton = UIButton().then {
-    //     $0.backgroundColor = .main
-    // }
-
     private let floatingButton = UIButton().then {
         var config = UIButton.Configuration.filled()
-        config.baseBackgroundColor = .main
+        config.baseBackgroundColor = .customYellow
         config.baseForegroundColor = .black
         config.cornerStyle = .capsule
         let image = UIImage(systemName: "plus")?
@@ -96,16 +92,14 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         setup()
 
-        let sample1 = UIImage(named: "test1")
-        let sample2 = UIImage(named: "test2")
-        let sample3 = UIImage(named: "test3")
-        let sample4 = UIImage(named: "test4")
-
         applySnapshot(with: [
-            sample1!,
-            sample2!,
-            sample3!,
-            sample4!
+            UIImage(named: "test1")!,
+            UIImage(named: "test2")!,
+            UIImage(named: "test3")!,
+            UIImage(named: "test4")!,
+            UIImage(named: "test5")!,
+            UIImage(named: "test6")!,
+
         ])
 
         applyGradientBackground()
