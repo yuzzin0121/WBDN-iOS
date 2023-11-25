@@ -131,7 +131,7 @@ class PhotoInfoViewController: UIViewController {
         $0.backgroundColor = .customYellow
         $0.titleLabel?.font = .pretendard(size: 17, weight: .semiBold)
         $0.setTitle("다음", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
+        $0.setTitleColor(.black, for: .normal)
         
         $0.layer.cornerRadius = 16
         $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner]
@@ -152,9 +152,29 @@ class PhotoInfoViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        guard let isoValue = metaDataDictionary["ISOSpeedRatings"] as? Float else {
+            print("없음")
+            return
+        }
+        print(String(format: "%.2f", isoValue))
+        isoTextField.text = String(format: "%.2f", isoValue)
+        
+        guard let speedValue = metaDataDictionary["ShutterSpeedValue"] as? Float else {
+            return
+        }
+        speedTextField.text = String(format: "%.2f", speedValue)
+        
+        guard let apertureValue = metaDataDictionary["ApertureValue"] as? Float else {
+            return
+        }
+        apertureTextField.text = String(format: "%.2f", apertureValue)
+    }
+    
     // MARK: - View
     func setUpView() {
         self.view.backgroundColor = .customNavy
+        nextButton.addTarget(self, action: #selector(didTapNextButton), for: .touchUpInside)
     }
     
     // MARK: - Layout
@@ -260,7 +280,7 @@ class PhotoInfoViewController: UIViewController {
         apertureTextField.resignFirstResponder()
         
         let nextVC = PhotoInfo2ViewController()
-//        nextVC.metaDataDictionary = imageLoadResult
+        nextVC.metaDataDictionary = self.metaDataDictionary
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }

@@ -95,6 +95,8 @@ class AddImageViewController: UIViewController {
         // addImageView에 제스처 추가
         addImageView.addGestureRecognizer(addImageTapGesture)
         
+        nextButton.addTarget(self, action: #selector(tappedNext), for: .touchUpInside)
+        
 //        // 로그인 버튼
 //        loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
 //        
@@ -210,7 +212,7 @@ extension AddImageViewController: PHPickerViewControllerDelegate {
         present(picker, animated: true, completion: nil)
     }
     
-    @objc func next() {
+    @objc func tappedNext() {
         print("go to next")
         let nextVC = PhotoInfoViewController()
         nextVC.metaDataDictionary = imageLoadResult
