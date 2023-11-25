@@ -16,7 +16,7 @@ class PhotoInfoViewController: UIViewController {
     
     // MARK: - Properties
     lazy var photoDeviceLabel = UILabel().then {
-        $0.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
+        $0.font = .pretendard(size: 22, weight: .semiBold)
         $0.text = "촬영 기기를 선택해주세요! *"
         $0.textColor = .white
         
@@ -31,14 +31,11 @@ class PhotoInfoViewController: UIViewController {
         var configuration = UIButton.Configuration.filled()
         
         var container = AttributeContainer()
-        container.font = .pretendard(size: 14, weight: .semiBold)
+        container.font = .pretendard(size: 12, weight: .semiBold)
         configuration.attributedTitle = AttributedString(devices[0], attributes: container)
-//        configuration.titleAlignment = .leading
-
         configuration.background.cornerRadius = 16
         configuration.baseBackgroundColor = .customLightNavy
         let button = UIButton(configuration: configuration, primaryAction: nil)
-//        button.backgroundColor = .customLightNavy
         button.setTitleColor(.white, for: .normal)
         button.contentHorizontalAlignment = .leading
         button.tintColor = .white
@@ -82,7 +79,6 @@ class PhotoInfoViewController: UIViewController {
         $0.autocorrectionType = .no
         $0.attributedPlaceholder = attributedPlaceholder
         $0.backgroundColor = .customLightNavy
-        $0.returnKeyType = .next
         $0.leftViewMode = .always
         $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         $0.layer.masksToBounds = true
@@ -102,7 +98,6 @@ class PhotoInfoViewController: UIViewController {
         $0.autocorrectionType = .no
         $0.attributedPlaceholder = attributedPlaceholder
         $0.backgroundColor = .customLightNavy
-        $0.returnKeyType = .next
         $0.leftViewMode = .always
         $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         $0.layer.masksToBounds = true
@@ -122,7 +117,6 @@ class PhotoInfoViewController: UIViewController {
         $0.autocorrectionType = .no
         $0.attributedPlaceholder = attributedPlaceholder
         $0.backgroundColor = .customLightNavy
-        $0.returnKeyType = .next
         $0.leftViewMode = .always
         $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         $0.layer.masksToBounds = true
@@ -253,6 +247,7 @@ class PhotoInfoViewController: UIViewController {
     func changeDeviceTitle(_ title: String) {
         selectBtn.setTitle(title, for: .normal)
     }
+    
 
     // MARK: - Button Tap
     @objc func didTapNextButton() {
@@ -265,15 +260,23 @@ class PhotoInfoViewController: UIViewController {
 extension PhotoInfoViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == isoTextField {
+            textField.resignFirstResponder()
             speedTextField.becomeFirstResponder()
         }
         else if textField == speedTextField {
+            textField.resignFirstResponder()
             apertureTextField.becomeFirstResponder()
         }
         else if textField == apertureTextField {
+            textField.resignFirstResponder()
             didTapNextButton()
         }
         return true
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            self.view.endEditing(true)
+        }
+    
    
 }
