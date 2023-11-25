@@ -20,6 +20,7 @@ class SignUpViewController: UIViewController {
     
     lazy var image1: UIImageView = UIImageView().then {
         $0.image = UIImage(systemName: "seal.fill")
+        $0.tintColor = .yellow
     }
     
     lazy var image1Label: UILabel = UILabel().then {
@@ -41,6 +42,7 @@ class SignUpViewController: UIViewController {
         $0.layer.cornerRadius = 10
         $0.clipsToBounds = true
         $0.backgroundColor = UIColor.white // 색 수정 필요
+        $0.font = .systemFont(ofSize: 15)
         
         // 좌우 여백 설정
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 10))
@@ -55,7 +57,7 @@ class SignUpViewController: UIViewController {
     // id 중복확인 버튼
     lazy var idDupCheckButton: UIButton = UIButton().then {
         var titleAttr = AttributedString.init("중복확인")
-        titleAttr.font = UIFont.systemFont(ofSize: 15)
+        titleAttr.font = UIFont.systemFont(ofSize: 17)
 
         $0.configuration = .filled()
         $0.configuration?.attributedTitle = titleAttr
@@ -66,12 +68,14 @@ class SignUpViewController: UIViewController {
     
     // "아이디" 경고 라벨
     lazy var idWarnLabel: UILabel = UILabel().then {
-        $0.text = "이미 존재하는 아이디입니다."
-        $0.textColor = UIColor.red // 색 수정 필요
+        $0.text = "한글/영문/숫자 중 조합하여 2자~20자 입력"
+        $0.textColor = UIColor.white // 색 수정 필요
+        $0.font = .systemFont(ofSize: 11)
     }
     
     lazy var image2: UIImageView = UIImageView().then {
         $0.image = UIImage(systemName: "seal.fill")
+        $0.tintColor = .yellow
     }
     
     lazy var image2Label: UILabel = UILabel().then {
@@ -95,9 +99,10 @@ class SignUpViewController: UIViewController {
         $0.clipsToBounds = true
         $0.backgroundColor = UIColor.white // 색 수정 필요
         $0.isSecureTextEntry = true // 비밀번호 **** 표시
+        $0.font = .systemFont(ofSize: 15)
         
         // 좌우 여백 설정
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 10))
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 10))
         
         $0.leftView = paddingView
         $0.leftViewMode = .always
@@ -113,9 +118,10 @@ class SignUpViewController: UIViewController {
         $0.clipsToBounds = true
         $0.backgroundColor = UIColor.white // 색 수정 필요
         $0.isSecureTextEntry = true // 비밀번호 **** 표시
+        $0.font = .systemFont(ofSize: 15)
         
         // 좌우 여백 설정
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 10))
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 10))
         
         $0.leftView = paddingView
         $0.leftViewMode = .always
@@ -126,12 +132,14 @@ class SignUpViewController: UIViewController {
     
     // "비밀번호" 경고 라벨
     lazy var pwWarnLabel: UILabel = UILabel().then {
-        $0.text = "비밀번호가 일치하지 않습니다."
-        $0.textColor = UIColor.red // 색 수정 필요
+        $0.text = "한글/영문/숫자 중 조합하여 4자~20자 입력"
+        $0.textColor = UIColor.white // 색 수정 필요
+        $0.font = .systemFont(ofSize: 11)
     }
     
     lazy var image3: UIImageView = UIImageView().then {
         $0.image = UIImage(systemName: "seal.fill")
+        $0.tintColor = .yellow
     }
     
     lazy var image3Label: UILabel = UILabel().then {
@@ -153,10 +161,10 @@ class SignUpViewController: UIViewController {
         $0.layer.cornerRadius = 10
         $0.clipsToBounds = true
         $0.backgroundColor = UIColor.white // 색 수정 필요
-        $0.isSecureTextEntry = true // 비밀번호 **** 표시
+        $0.font = .systemFont(ofSize: 15)
         
         // 좌우 여백 설정
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 10))
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 10))
         
         $0.leftView = paddingView
         $0.leftViewMode = .always
@@ -168,7 +176,7 @@ class SignUpViewController: UIViewController {
     // 닉네임 중복확인 버튼
     lazy var nickNameDupCheckButton: UIButton = UIButton().then {
         var titleAttr = AttributedString.init("중복확인")
-        titleAttr.font = UIFont.systemFont(ofSize: 15)
+        titleAttr.font = UIFont.systemFont(ofSize: 17)
 
         $0.configuration = .filled()
         $0.configuration?.attributedTitle = titleAttr
@@ -179,15 +187,16 @@ class SignUpViewController: UIViewController {
     
     // "닉네임" 경고 라벨
     lazy var nickNameWarnLabel: UILabel = UILabel().then {
-        $0.text = "이미 사용중인 닉네임입니다."
-        $0.textColor = UIColor.red // 색 수정 필요
+        $0.text = "한글/영문/숫자 중 조합하여 2자~20자 입력"
+        $0.textColor = UIColor.white // 색 수정 필요
+        $0.font = .systemFont(ofSize: 11)
     }
     
     // 회원가입 버튼
     lazy var signUpButton: UIButton = UIButton().then {
         
         var titleAttr = AttributedString.init("회원가입")
-        titleAttr.font = UIFont.systemFont(ofSize: 18)
+        titleAttr.font = UIFont.systemFont(ofSize: 17)
 
         $0.configuration = .filled()
         $0.configuration?.attributedTitle = titleAttr
@@ -195,7 +204,7 @@ class SignUpViewController: UIViewController {
         $0.configuration?.baseBackgroundColor = .yellow
         $0.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20)
         
-        $0.layer.cornerRadius = 30
+        $0.layer.cornerRadius = 25
         $0.clipsToBounds = true
     }
     
@@ -214,19 +223,17 @@ class SignUpViewController: UIViewController {
     // MARK: set component config
     private func setUpView() {
         
-        idDupCheckButton.addTarget(self, action: #selector(signUp), for: .touchUpInside)
+        idDupCheckButton.addTarget(self, action: #selector(idDupCheck), for: .touchUpInside)
         
-        nickNameDupCheckButton.addTarget(self, action: #selector(signUp), for: .touchUpInside)
+        nickNameDupCheckButton.addTarget(self, action: #selector(nickNameDupCheck), for: .touchUpInside)
         
         signUpButton.addTarget(self, action: #selector(signUp), for: .touchUpInside)
     }
     
     // MARK: Delegate
     private func setUpDelegate() {
-        idTextField.delegate = self
         pwTextField.delegate = self
         pwCheckTextField.delegate = self
-        nickNameTextField.delegate = self
     }
     
     // MARK: addSubView
@@ -268,7 +275,7 @@ class SignUpViewController: UIViewController {
         image1.snp.makeConstraints {
             $0.left.equalToSuperview().offset(15)
             $0.top.equalTo(titleLabel.snp.bottom).offset(30)
-            $0.size.equalTo(50)
+            $0.size.equalTo(40)
         }
         
         image1Label.snp.makeConstraints {
@@ -304,7 +311,7 @@ class SignUpViewController: UIViewController {
         image2.snp.makeConstraints {
             $0.left.equalToSuperview().offset(15)
             $0.top.equalTo(idWarnLabel.snp.bottom).offset(20)
-            $0.size.equalTo(50)
+            $0.size.equalTo(40)
         }
         
         image2Label.snp.makeConstraints {
@@ -340,7 +347,7 @@ class SignUpViewController: UIViewController {
         image3.snp.makeConstraints {
             $0.left.equalToSuperview().offset(15)
             $0.top.equalTo(pwWarnLabel.snp.bottom).offset(30)
-            $0.size.equalTo(50)
+            $0.size.equalTo(40)
         }
         
         image3Label.snp.makeConstraints {
@@ -375,7 +382,7 @@ class SignUpViewController: UIViewController {
         
         signUpButton.snp.makeConstraints {
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-20)
-            $0.height.equalTo(60)
+            $0.height.equalTo(55)
             $0.left.equalToSuperview().offset(15)
             $0.right.equalToSuperview().offset(-15)
         }
@@ -384,19 +391,40 @@ class SignUpViewController: UIViewController {
 }
 
 extension SignUpViewController: UITextFieldDelegate {
-    @objc func login() {
-        let ID = self.idTextField.text
-        let PW = self.pwTextField.text
-        print(ID,PW)
+    
+    // 텍스트 필드의 값이 변경될 때마다 호출됩니다.
+    func textFieldDidChangeSelection(_ textField: UITextField) {
         
-        // 대충 로그인 API 호출
-//        self.navigationController?.pushViewController(viewController, animated: true)
+        if self.pwTextField.text == "" && self.pwCheckTextField.text == "" {
+            self.pwWarnLabel.textColor = .white
+            self.pwWarnLabel.text = "조건조건조건조건"
+        }
+        else if self.pwTextField.text == self.pwCheckTextField.text {
+            print("비밀번호 일치")
+            self.pwWarnLabel.textColor = .yellow
+            self.pwWarnLabel.text = "비밀번호가 일치합니다."
+        }
+        else {
+            self.pwWarnLabel.textColor = .red
+            self.pwWarnLabel.text = "비밀번호가 일치하지 않습니다."
+        }
+    }
+            
+    
+    @objc func idDupCheck() {
+        let ID = self.idTextField.text
+        print(ID)
+        
+    }
+    
+    @objc func nickNameDupCheck() {
+        let nickName = self.nickNameTextField.text
+        print(nickName)
     }
     
     @objc func signUp() {
         print("go to signUp")
         // 대충 로그인 API 호출
-//        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

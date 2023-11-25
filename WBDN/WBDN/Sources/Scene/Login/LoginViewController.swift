@@ -114,8 +114,6 @@ class LoginViewController: UIViewController {
     
     // MARK: Delegate
     private func setUpDelegate() {
-        idTextField.delegate = self
-        pwTextField.delegate = self
     }
     
     // MARK: addSubView
