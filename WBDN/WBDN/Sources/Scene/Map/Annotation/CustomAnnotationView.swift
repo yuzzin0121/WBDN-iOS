@@ -11,10 +11,11 @@ import SnapKit
 import Then
 
 class CustomAnnotationView: MKAnnotationView {
+    static var identifier = "CustomAnnotationView"
     
     // 핀 이미지
     lazy var customImageView = UIImageView().then {
-//        $0.image = UIImage(named: "pin")
+        $0.image = UIImage(named: "pin")
         $0.contentMode = .scaleAspectFit
     }
     
@@ -32,10 +33,12 @@ class CustomAnnotationView: MKAnnotationView {
     func configUI() {
         self.addSubview(customImageView)
         
-        customImageView.snp.makeConstraints {
-            $0.width.equalTo(26)
-            $0.edges.equalToSuperview()
-        }
+//        customImageView.snp.makeConstraints {
+//            $0.width.equalTo(26)
+//            $0.edges.equalToSuperview()
+//        }
+        
+        image = UIImage(named: "pin")
     }
     
     // Annotation 재사용 전 값을 초기화 -> 다른 값이 들어가는 것을 방지
@@ -48,25 +51,23 @@ class CustomAnnotationView: MKAnnotationView {
     // 뷰에 들어갈 값을 미리 설정
     override func prepareForDisplay() {
         super.prepareForDisplay()
+        print(#function)
         
-        guard let annotation = annotation as? CustomAnnotation else { return }
-        
+        CustomAnnotationView.identifier = "CustomAnnotationView"
+
+        guard let annotation = annotation as? CustomAnnotation else {
+            print("없음")
+            return
+
+        }
+
         guard let imageName = annotation.imageName,
               let image = UIImage(named: imageName) else { return }
-        
+
         customImageView.image = image   // 이미지 설정
-        
+//
     }
-    
+
 }
 
 
-class CustomAnnotation: NSObject, MKAnnotation {
-    var coordinate: CLLocationCoordinate2D
-    
-    var imageName: String?
-    
-    init(coordinate: CLLocationCoordinate2D) {
-        self.coordinate = coordinate
-    }
-}
