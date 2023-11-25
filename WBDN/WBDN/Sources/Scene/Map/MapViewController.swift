@@ -21,7 +21,7 @@ class MapViewController: UIViewController {
     // 검색 버튼 뷰
     lazy var searchBtnView = UIView().then {
         $0.isUserInteractionEnabled = true
-        $0.backgroundColor = .mainNavyColor
+        $0.backgroundColor = .customNavy
         $0.layer.cornerRadius = 28
         $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner]
     }
@@ -125,8 +125,8 @@ class MapViewController: UIViewController {
         mapView.bringSubviewToFront(searchBtnView)
     }
     
+    // 검색 버튼 눌렀을 때
     @objc func searchBtnDidTap(_ gesture: UITapGestureRecognizer) {
-        print("눌렀음!")
         let searchLocationVC = SearchLocationViewController()
         
         searchLocationVC.completionHandler = {
@@ -172,6 +172,7 @@ class MapViewController: UIViewController {
     }
 }
 
+// MARK: - CLLocationManagerDelegate
 extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
@@ -184,6 +185,7 @@ extension MapViewController: CLLocationManagerDelegate {
     }
 }
 
+// MARK: - MKMapViewDelegate
 extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !(annotation is MKUserLocation) else { return nil }
