@@ -89,7 +89,9 @@ final class FeedCell: UICollectionViewCell {
     func configure(with post: Post) {
         guard let url = URL(string: post.photoUrl) else { return }
         imageView.kf.setImage(with: url)
+        print("포스트!!!", url)
 
+        nicknameLabel.text = post.nickname
     }
 }
 
