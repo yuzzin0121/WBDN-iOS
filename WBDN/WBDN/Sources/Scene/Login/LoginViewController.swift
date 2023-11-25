@@ -26,6 +26,7 @@ class LoginViewController: UIViewController {
         $0.layer.cornerRadius = 30
         $0.clipsToBounds = true
         $0.backgroundColor = UIColor.white // 색 수정 필요
+        $0.font = UIFont.systemFont(ofSize: 15)
         
         // 좌우 여백 설정
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 10))
@@ -44,6 +45,7 @@ class LoginViewController: UIViewController {
         $0.clipsToBounds = true
         $0.backgroundColor = UIColor.white // 색 수정 필요
         $0.isSecureTextEntry = true // 비밀번호 **** 표시
+        $0.font = UIFont.systemFont(ofSize: 15)
         
         // 좌우 여백 설정
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 10))
@@ -59,7 +61,7 @@ class LoginViewController: UIViewController {
     lazy var loginButton: UIButton = UIButton().then {
         
         var titleAttr = AttributedString.init("로그인")
-        titleAttr.font = UIFont.systemFont(ofSize: 18)
+        titleAttr.font = UIFont.systemFont(ofSize: 17)
 
         $0.configuration = .filled()
         $0.configuration?.attributedTitle = titleAttr
@@ -75,13 +77,13 @@ class LoginViewController: UIViewController {
     lazy var notMemberYetLabel: UILabel = UILabel().then {
         $0.text = "아직 회원이 아니신가요?"
         $0.textColor = UIColor.white // 색 수정 필요
-        $0.font = UIFont.systemFont(ofSize: 15)
+        $0.font = UIFont.systemFont(ofSize: 13)
     }
     
     // 회원가입 버튼
     lazy var signUpButton: UIButton = UIButton().then {
         var titleAttr = AttributedString.init("회원가입")
-        titleAttr.font = UIFont.systemFont(ofSize: 15)
+        titleAttr.font = UIFont.systemFont(ofSize: 13, weight: .heavy)
 
         $0.configuration = .filled()
         $0.configuration?.attributedTitle = titleAttr
@@ -158,13 +160,13 @@ class LoginViewController: UIViewController {
         }
         
         notMemberYetLabel.snp.makeConstraints {
-            $0.centerX.equalToSuperview().offset(-45)
+            $0.centerX.equalToSuperview().offset(-40)
             $0.top.equalTo(loginButton.snp.bottom).offset(10)
         }
         
         signUpButton.snp.makeConstraints {
             $0.height.equalTo(notMemberYetLabel)
-            $0.centerX.equalToSuperview().offset(65)
+            $0.centerX.equalToSuperview().offset(60)
             $0.top.equalTo(notMemberYetLabel)
         }
     }
