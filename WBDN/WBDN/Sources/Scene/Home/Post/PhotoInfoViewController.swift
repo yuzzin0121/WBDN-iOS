@@ -154,7 +154,7 @@ class PhotoInfoViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         guard let isoValue = metaDataDictionary["ISOSpeedRatings"] as? Float else {
-            print("없음")
+            print("없음   ")
             return
         }
         print(String(format: "%.2f", isoValue))
