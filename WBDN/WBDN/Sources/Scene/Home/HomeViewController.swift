@@ -52,7 +52,7 @@ final class HomeViewController: UIViewController {
 
     private let profileGreetingLabel = UILabel().then {
         $0.text = "뉴진스 님을 위한\n밤하늘이에요!"
-        $0.font = .systemFont(ofSize: 15, weight: .bold)
+        $0.font = .pretendard(size: 15, weight: .bold)
         $0.textColor = .white
         $0.numberOfLines = 2
     }
