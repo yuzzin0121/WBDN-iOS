@@ -95,6 +95,8 @@ class AddImageViewController: UIViewController {
         // addImageView에 제스처 추가
         addImageView.addGestureRecognizer(addImageTapGesture)
         
+        nextButton.addTarget(self, action: #selector(tappedNext), for: .touchUpInside)
+        
 //        // 로그인 버튼
 //        loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
 //        
@@ -210,8 +212,11 @@ extension AddImageViewController: PHPickerViewControllerDelegate {
         present(picker, animated: true, completion: nil)
     }
     
-    @objc func next() {
+    @objc func tappedNext() {
         print("go to next")
+        let nextVC = PhotoInfoViewController()
+        nextVC.metaDataDictionary = imageLoadResult
+        self.navigationController?.pushViewController(nextVC, animated: true)
         // 여기에서 imageLoadResult 넘겨주면 됩니다.
         // 대충 로그인 API 호출
     }

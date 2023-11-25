@@ -198,6 +198,17 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		E517A60E2B12891000781455 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E517A6232B128BB100781455 /* SignUp&Member.swift */,
+				E517A6192B128AC500781455 /* Posts.swift */,
+				E517A61D2B128B0D00781455 /* Comment&Replies.swift */,
+				E517A6212B128B5F00781455 /* BaseResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E5CF42122B11C3F200A20D28 = {
 			isa = PBXGroup;
 			children = (
@@ -655,9 +666,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T2Q8P9627P;
+				DEVELOPMENT_TEAM = 8T2JAAS967;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WBDN/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -671,8 +683,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "neordinary-hack-r.WBDN";
+				PRODUCT_BUNDLE_IDENTIFIER = "neordinary-hack-r.WBDN1xxx";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -687,9 +700,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T2Q8P9627P;
+				DEVELOPMENT_TEAM = 8T2JAAS967;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WBDN/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -703,8 +717,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "neordinary-hack-r.WBDN";
+				PRODUCT_BUNDLE_IDENTIFIER = "neordinary-hack-r.WBDN1xxx";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

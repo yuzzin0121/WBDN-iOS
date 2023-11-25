@@ -11,6 +11,7 @@ import Then
 import MapKit
 
 class PhotoInfo2ViewController: UIViewController {
+    var metaDataDictionary: [String:Any] = [:]
     
     private var location = CLLocationCoordinate2D()
     private var date = Date()
@@ -212,6 +213,13 @@ class PhotoInfo2ViewController: UIViewController {
         
         
     }//: viewDidLoad()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let isoValue = metaDataDictionary["ISOSpeedRatings"] as? Float else {
+            return
+        }
+        print(String(format: "%.2f", isoValue))
+    }
     
     // MARK: set component config
     private func setUpView() {
