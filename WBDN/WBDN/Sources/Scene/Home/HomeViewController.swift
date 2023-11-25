@@ -33,8 +33,6 @@ final class HomeViewController: UIViewController {
         $0.text = "🐰"
     }
 
-    private let headerStarImageView = UIImageView(image: .mainHeaderStars)
-
     private lazy var profileEmojiContainerView = UIView().then {
         $0.backgroundColor = .white
         let width: CGFloat = 68
@@ -49,6 +47,8 @@ final class HomeViewController: UIViewController {
             make.center.equalToSuperview()
         }
     }
+
+    private let headerStarImageView = UIImageView(image: .mainHeaderStars)
 
     private let profileGreetingLabel = UILabel().then {
         $0.text = "뉴진스 님을 위한\n밤하늘이에요!"
@@ -73,7 +73,7 @@ final class HomeViewController: UIViewController {
         $0.layer.cornerRadius = 20
     }
 
-    private let floatingButton = UIButton().then {
+    private lazy var floatingButton = UIButton().then {
         var config = UIButton.Configuration.filled()
         config.baseBackgroundColor = .customYellow
         config.baseForegroundColor = .black
@@ -84,6 +84,8 @@ final class HomeViewController: UIViewController {
         $0.configuration = config
         $0.layer.shadowRadius = 10
         $0.layer.shadowOpacity = 0.3
+
+        $0.addTarget(self, action: #selector(tappedFloatingButton), for: .touchUpInside)
     }
 
     // MARK: - LifeCycle
@@ -112,6 +114,12 @@ final class HomeViewController: UIViewController {
     private func setup() {
         setupLayout()
         setupCollectionView()
+    }
+
+    // MARK: - Actions
+
+    @objc private func tappedFloatingButton() {
+        print("추가하는 컨트롤러로 이동")
     }
 }
 
