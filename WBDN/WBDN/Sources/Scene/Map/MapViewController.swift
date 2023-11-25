@@ -13,9 +13,38 @@ import MapKit
 import CoreLocation
 
 
+
 // MARK: - 지도 화면
 class MapViewController: UIViewController {
     // MARK: Variables
+    
+    // 검색 버튼 뷰
+    lazy var searchBtnView = UIView().then {
+        $0.isUserInteractionEnabled = true
+        $0.backgroundColor = .mainNavyColor
+        $0.layer.cornerRadius = 28
+        $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+    }
+    
+    // 검색 버튼 placeholder
+    lazy var searchBtnPlaceholder = UILabel().then {
+        let attributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)
+        ]
+        let attributedString = NSMutableAttributedString(string: "   장소를 검색해보세요.", attributes: attributes)
+
+        // 검색 아이콘
+        if let searchImage = UIImage(named: "search") {
+            let iconAttachment = NSTextAttachment()
+            iconAttachment.image = searchImage
+            let iconString = NSAttributedString(attachment: iconAttachment)
+            attributedString.insert(iconString, at: 0)
+        }
+        
+        $0.attributedText = attributedString
+        $0.sizeToFit()
+    }
     
     // 위치 관리 매니저
     private let locationManager = CLLocationManager()
@@ -24,15 +53,20 @@ class MapViewController: UIViewController {
     // 현재 지도의 중심 위치 + 스케일
     private var mapCurrentLocation: MKCoordinateRegion?
     
-    
+    private var searchCompleter = MKLocalSearchCompleter() /// 검색을 도와주는 변수
+    private var searchResults = [MKLocalSearchCompletion]() /// 검색 결과를 담는 변수
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setUpDelegate()
         registerMapAnnotationView()
         setUpLayout()
         setUpView()
         setUpConstraint()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(searchBtnDidTap(_:)))
+        searchBtnView.addGestureRecognizer(tapGesture)
     }
 
     // MARK: View
@@ -63,15 +97,49 @@ class MapViewController: UIViewController {
     // MARK: Layout
     func setUpLayout() {
         self.view.addSubview(mapView)
+        self.view.addSubview(searchBtnView)
+        self.searchBtnView.addSubview(searchBtnPlaceholder)
     }
     
     // MARK: Constraint
     func setUpConstraint() {
-        self.view.addSubview(mapView)
         // 지도 뷰
         mapView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        
+        // 검색 버튼 뷰
+        searchBtnView.snp.makeConstraints {
+            $0.width.equalTo(view.bounds.width * 0.82)
+            $0.height.equalTo(55)
+//            $0.width.equalTo(view.snp.width*0.8)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(0)
+            $0.centerX.equalTo(view.snp.centerX)
+            
+        }
+        
+        searchBtnPlaceholder.snp.makeConstraints {
+            $0.centerY.equalTo(searchBtnView.snp.centerY)
+            $0.leading.equalTo(searchBtnView.snp.leading).offset(20)
+        }
+        mapView.bringSubviewToFront(searchBtnView)
+    }
+    
+    @objc func searchBtnDidTap(_ gesture: UITapGestureRecognizer) {
+        print("눌렀음!")
+        let searchLocationVC = SearchLocationViewController()
+        
+        searchLocationVC.completionHandler = {
+            [weak self] coordinate in
+            
+            let region = MKCoordinateRegion(center: coordinate,
+                                            latitudinalMeters: 15000,
+                                            longitudinalMeters: 15000)
+            
+            self?.mapView.setRegion(region, animated: true)
+        }
+       
+        self.present(searchLocationVC, animated: true, completion: nil)
     }
     
     // 사용자 위치 어노테이션 mapView에 추가
