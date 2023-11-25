@@ -42,11 +42,13 @@ struct PostListResDto: Codable {
     let postListDtos: [Post]
 }
 
-struct Post: Codable {
+struct Post: Codable, Hashable {
     let postId: Int
     let nickname: String
     let photoUrl: String
     let likes: Int
+
+    let ratio: CGFloat = [CGFloat(16 / 9), CGFloat(9 / 16), CGFloat(4 / 3), CGFloat(3 / 4)].randomElement()!
 }
 
 struct PostLikeResDto: Codable {

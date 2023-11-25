@@ -13,6 +13,7 @@ class PhotoInfoViewController: UIViewController {
     
     
     var metaDataDictionary: [String:Any] = [:]
+    var selectedImage = UIImage()
     
     struct Constants {
         static let cornerRadius: CGFloat = 16.0
@@ -139,7 +140,7 @@ class PhotoInfoViewController: UIViewController {
     
     var menuChildren: [UIMenuElement] = []
     
-    let devices = ["DSLR / 미러리스", "Android 기기", "기타 기기", "iPhone 15 Pro", "iPhone 15", "iPhone 15 Plus", "iPhone 14 Pro Max"]
+    let devices = [ "iPhone 13 Pro", "iPhone 14 Pro Max", "iPhone 15 Plus", "iPhone 15", "iPhone 15 Pro", "DSLR / 미러리스", "Android 기기", "기타 기기" ]
 
     // MARK: - viewDidLoad()
     override func viewDidLoad() {
@@ -153,21 +154,30 @@ class PhotoInfoViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        guard let isoValue = metaDataDictionary["ISOSpeedRatings"] as? Float else {
-            print("없음   ")
+        guard let nsArray = metaDataDictionary["ISOSpeedRatings"] as? NSArray,  let isoValue = nsArray.firstObject as? Float else {
+            print("없음")
             return
         }
-        print(String(format: "%.2f", isoValue))
+
         isoTextField.text = String(format: "%.2f", isoValue)
         
-        guard let speedValue = metaDataDictionary["ShutterSpeedValue"] as? Float else {
+        guard let speedValue = metaDataDictionary["ShutterSpeedValue"] as? Double else {
             return
         }
+//        print(speedValue)
         speedTextField.text = String(format: "%.2f", speedValue)
         
-        guard let apertureValue = metaDataDictionary["ApertureValue"] as? Float else {
+        
+        guard let apertureValue = metaDataDictionary["ApertureValue"] as? Double else {
             return
         }
+//        print(apertureValue)
+        apertureTextField.text = String(format: "%.2f", apertureValue)
+        
+        guard let lensModel = metaDataDictionary["LensModel"] else {
+            return
+        }
+//        print(apertureValue)
         apertureTextField.text = String(format: "%.2f", apertureValue)
     }
     
@@ -279,8 +289,18 @@ class PhotoInfoViewController: UIViewController {
         speedTextField.resignFirstResponder()
         apertureTextField.resignFirstResponder()
         
+        let device = self.devices[0]
+        let iso = self.isoTextField.text
+        let shutterSpeed = self.speedTextField.text
+        let fnum = self.apertureTextField.text
+        
         let nextVC = PhotoInfo2ViewController()
-        nextVC.metaDataDictionary = self.metaDataDictionary
+//        nextVC.metaDataDictionary = self.metaDataDictionary
+        nextVC.selectedImage = selectedImage
+        nextVC.device = device
+        nextVC.iso = iso ?? ""
+        nextVC.shutterSpeed = shutterSpeed ?? ""
+        nextVC.fnum = fnum ?? ""
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
@@ -308,3 +328,8 @@ extension PhotoInfoViewController: UITextFieldDelegate {
     
    
 }
+
+@available(iOS 17, *)
+#Preview(traits: .defaultLayout, body: {
+    PhotoInfoViewController()
+})

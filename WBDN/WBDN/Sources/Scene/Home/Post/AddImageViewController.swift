@@ -15,6 +15,7 @@ import PhotosUI
 class AddImageViewController: UIViewController {
     
     private var imageLoadResult : [String:Any] = [:]
+    private var selectedImage = UIImage()
     
     // 이미지를 첨부해주세요 대문 라벨
     lazy var titleLabel: UILabel = UILabel().then {
@@ -46,6 +47,12 @@ class AddImageViewController: UIViewController {
         $0.text = "이미지 불러오기"
         $0.textColor = .white
         $0.font = .pretendard(size: 15, weight: .medium)
+    }
+    
+    // 이미지 뷰
+    lazy var selectedImageView:UIImageView = UIImageView().then {
+        $0.layer.cornerRadius = 15
+        $0.clipsToBounds = true
     }
     
     // 다음 버튼
@@ -115,6 +122,7 @@ class AddImageViewController: UIViewController {
         [
             titleLabel,
             addImageView,
+            selectedImageView,
             nextButton
         ].forEach { self.view.addSubview($0)}
         
@@ -144,6 +152,13 @@ class AddImageViewController: UIViewController {
         }
         
         addImageView.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(30)
+            $0.left.equalToSuperview().offset(17)
+            $0.right.equalToSuperview().offset(-17)
+            $0.height.equalTo(400)
+        }
+        
+        selectedImageView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(30)
             $0.left.equalToSuperview().offset(17)
             $0.right.equalToSuperview().offset(-17)
@@ -197,9 +212,11 @@ extension AddImageViewController: PHPickerViewControllerDelegate {
                 imageResult.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] (selectedImage: NSItemProviderReading?, error: Error?) in
                     // 선택한 Image를 Load해 수행할 명령
                     self?.imageLoadResult = dictionary
+                    guard let selectedImage = selectedImage as? UIImage else { return }
+                    self?.selectedImage = selectedImage
                     DispatchQueue.main.async {
-                        print(self?.imageLoadResult)
                         picker.dismiss(animated: true)
+                        self?.selectedImageView.image = selectedImage
                     }
                     return
                 }
@@ -215,10 +232,9 @@ extension AddImageViewController: PHPickerViewControllerDelegate {
     @objc func tappedNext() {
         print("go to next")
         let nextVC = PhotoInfoViewController()
-        nextVC.metaDataDictionary = imageLoadResult
+        nextVC.metaDataDictionary = self.imageLoadResult
+        nextVC.selectedImage = self.selectedImage
         self.navigationController?.pushViewController(nextVC, animated: true)
-        // 여기에서 imageLoadResult 넘겨주면 됩니다.
-        // 대충 로그인 API 호출
     }
 }
 

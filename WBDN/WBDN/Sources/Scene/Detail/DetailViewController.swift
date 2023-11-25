@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Then
+import Kingfisher
 
 final class DetailViewController: UIViewController {
 
@@ -44,7 +45,7 @@ final class DetailViewController: UIViewController {
     }
 
     private let nicknameLabel = UILabel().then {
-        $0.text = "닉네임"
+        $0.text = "-"
         $0.font = .pretendard(size: 15, weight: .semiBold)
         $0.textColor = .white
     }
@@ -55,11 +56,11 @@ final class DetailViewController: UIViewController {
         $0.image = UIImage.test4
         $0.layer.cornerRadius = 16
         $0.clipsToBounds = true
-        $0.contentMode = .scaleAspectFit
+        $0.contentMode = .scaleAspectFill
     }
 
     private let deviceInfoChip = LabelChip().then {
-        $0.title = "iPhone 14 Pro"
+        $0.title = "-"
         $0.isBackgroundSynced = false
         $0.titleColor = .customYellow
         $0.layer.borderColor = UIColor.customYellow.cgColor
@@ -68,20 +69,20 @@ final class DetailViewController: UIViewController {
 
     private let isoValueLabel = UILabel().then {
         $0.textColor = .white
-        $0.text = "640"
+        $0.text = "-"
         $0.font = .pretendard(size: 15, weight: .semiBold)
     }
 
     private let shutterSpeedValueLabel = UILabel().then {
         $0.textColor = .white
-        $0.text = "1/8 s"
+        $0.text = "-"
         $0.font = .pretendard(size: 15, weight: .semiBold)
     }
 
     /// 조리개 값 레이블
     private let apertureValueLabel = UILabel().then {
         $0.textColor = .white
-        $0.text = "f 1.8"
+        $0.text = "-"
         $0.font = .pretendard(size: 15, weight: .semiBold)
     }
 
@@ -103,25 +104,25 @@ final class DetailViewController: UIViewController {
     }
 
     private let retouchInfoLabel = UILabel().then {
-        $0.text = "후보정이나 필터는 따로 안씀요~"
+        $0.text = "-"
         $0.textColor = .white
         $0.font = .pretendard(size: 11, weight: .medium)
     }
 
     private let commentInfoLabel = UILabel().then {
-        $0.text = "카메라 기본 보정기능으로 노출 값을 내려주었습니다~ \n한강공원 갔다가 달이 너무 예뻐서 찍었어요 .. ㅎㅎㅎㅋㅋㅋ~"
+        $0.text = "-"
         $0.textColor = .white
         $0.font = .pretendard(size: 11, weight: .medium)
     }
 
     private let locationInfoLabel = UILabel().then {
-        $0.text = "서울특별시 마포구"
+        $0.text = "-"
         $0.textColor = .white
         $0.font = .pretendard(size: 11, weight: .medium)
     }
 
     private let dayInfoLabel = UILabel().then {
-        $0.text = "2023년 11월 25일 토요일"
+        $0.text = "-"
         $0.textColor = .white
         $0.font = .pretendard(size: 11, weight: .medium)
     }
@@ -143,10 +144,47 @@ final class DetailViewController: UIViewController {
 
     // MARK: - Public
 
-    func configure(comments: [String]) {
+    func configure(post: Post) {
+        guard let url = URL(string: post.photoUrl) else { return }
+        photoImageView.kf.setImage(with: url)
+
+        Task {
+            let response = try await NetworkService.shared.request(.getComments(postId: post.postId), type: BaseResponse<GetCommentsDto>.self)
+            let comments = response.result?.comments
+
+            await MainActor.run {
+                if let comments {
+                    configure(comments: comments)
+                }
+            }
+        }
+
+        Task {
+            let response = try await NetworkService.shared.request(.findPostDetail(postId: post.postId), type: BaseResponse<PostDetailResDto>.self)
+
+            await MainActor.run {
+                UIView.animate(withDuration: 0.2, delay: 0) {
+                    guard let dto = response.result else { return }
+                    self.locationInfoLabel.text = dto.address ?? "주소 정보가 없습니다."
+                    self.deviceInfoChip.title = dto.device
+                    self.apertureValueLabel.text = dto.fnumber ?? "정보없음"
+                    self.isoValueLabel.text = dto.iso ?? "정보없음"
+                    self.shutterSpeedValueLabel.text = dto.shutterSpeed ?? "정보없음"
+                    self.nicknameLabel.text = dto.nickname
+                    self.dayInfoLabel.text = dto.shootingDate?.serverDate.formatted(.dateTime) ?? "정보없음"
+                }
+            }
+
+        }
+
+        post.likes
+        nicknameLabel.text = post.nickname
+    }
+
+    func configure(comments: [GetCommentDto]) {
         comments.map {
             let cell = CommentCell()
-            cell.configure(nickname: "닉네임", comment: $0)
+            cell.configure(nickname: "닉네임", comment: $0.content)
             return cell
         }.forEach { cell in
             commentStackView.addArrangedSubview(cell)
@@ -211,7 +249,8 @@ final class DetailViewController: UIViewController {
 
         containerView.addSubview(photoImageView)
         photoImageView.snp.makeConstraints { make in
-            make.top.equalTo(profileView.snp.bottom).offset(16)
+            make.width.height.equalTo(view.frame.width)
+            make.top.equalTo(profileView.snp.bottom).offset(30)
             make.horizontalEdges.equalToSuperview()
         }
 
@@ -297,10 +336,6 @@ final class DetailViewController: UIViewController {
             make.horizontalEdges.equalToSuperview()
             make.bottom.equalToSuperview()
         }
-
-
-        #warning("테스트 코드 - 삭제 요망")
-        configure(comments: ["코멘트1", "코멘트2", "코멘트3", "코멘트4"])
     }
 
     // 추가 촬영 정보
@@ -407,8 +442,8 @@ final class DetailViewController: UIViewController {
     }
 }
 
-//
-//@available(iOS 17, *)
-//#Preview(traits: .defaultLayout, body: {
-//    DetailViewController()
-//})
+
+@available(iOS 17, *)
+#Preview(traits: .defaultLayout, body: {
+   DetailViewController()
+})
