@@ -21,6 +21,10 @@
 		88DCDC112B1219F500918BD6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DCDC102B1219F500918BD6 /* LoginViewController.swift */; };
 		88DCDC132B121AF300918BD6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DCDC122B121AF300918BD6 /* SignUpViewController.swift */; };
 		88DCDC152B122DEB00918BD6 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DCDC142B122DEB00918BD6 /* WelcomeViewController.swift */; };
+		E517A61A2B128AC500781455 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E517A6192B128AC500781455 /* Posts.swift */; };
+		E517A61E2B128B0D00781455 /* Comment&Replies.swift in Sources */ = {isa = PBXBuildFile; fileRef = E517A61D2B128B0D00781455 /* Comment&Replies.swift */; };
+		E517A6222B128B5F00781455 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E517A6212B128B5F00781455 /* BaseResponse.swift */; };
+		E517A6242B128BB100781455 /* SignUp&Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = E517A6232B128BB100781455 /* SignUp&Member.swift */; };
 		E5C797042B12684E008A08D6 /* LabelChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C797032B12684E008A08D6 /* LabelChip.swift */; };
 		E5CF421F2B11C3F200A20D28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF421E2B11C3F200A20D28 /* AppDelegate.swift */; };
 		E5CF42212B11C3F200A20D28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF42202B11C3F200A20D28 /* SceneDelegate.swift */; };
@@ -174,6 +178,17 @@
 				88DCDC142B122DEB00918BD6 /* WelcomeViewController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		E517A60E2B12891000781455 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E517A6232B128BB100781455 /* SignUp&Member.swift */,
+				E517A6192B128AC500781455 /* Posts.swift */,
+				E517A61D2B128B0D00781455 /* Comment&Replies.swift */,
+				E517A6212B128B5F00781455 /* BaseResponse.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		E5CF42122B11C3F200A20D28 = {
@@ -456,6 +471,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E517A6242B128BB100781455 /* SignUp&Member.swift in Sources */,
 				88DCDC112B1219F500918BD6 /* LoginViewController.swift in Sources */,
 				88DCDC152B122DEB00918BD6 /* WelcomeViewController.swift in Sources */,
 				E5CF42642B1208C500A20D28 /* PinterestLayout.swift in Sources */,

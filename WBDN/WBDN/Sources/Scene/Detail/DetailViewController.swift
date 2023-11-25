@@ -52,7 +52,7 @@ final class DetailViewController: UIViewController {
     private let starImageView = UIImageView(image: UIImage(named: "star"))
 
     private let photoImageView = UIImageView().then {
-        $0.image = .test4
+        $0.image = UIImage.test4
         $0.layer.cornerRadius = 16
         $0.clipsToBounds = true
         $0.contentMode = .scaleAspectFit
@@ -396,7 +396,7 @@ final class DetailViewController: UIViewController {
         label.textColor = .white
 
         let imageView = UIImageView().then {
-            $0.image = .commentDots
+            $0.image = UIImage.commentDots
             $0.contentMode = .scaleAspectFit
         }
 
