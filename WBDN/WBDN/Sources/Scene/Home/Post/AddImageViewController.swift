@@ -212,6 +212,9 @@ extension AddImageViewController: PHPickerViewControllerDelegate {
     
     @objc func next() {
         print("go to next")
+        let nextVC = PhotoInfoViewController()
+        nextVC.metaDataDictionary = imageLoadResult
+        self.navigationController?.pushViewController(nextVC, animated: true)
         // 여기에서 imageLoadResult 넘겨주면 됩니다.
         // 대충 로그인 API 호출
     }

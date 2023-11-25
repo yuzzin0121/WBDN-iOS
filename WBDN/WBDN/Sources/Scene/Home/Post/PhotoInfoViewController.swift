@@ -10,6 +10,10 @@ import Then
 import SnapKit
 
 class PhotoInfoViewController: UIViewController {
+    
+    
+    var metaDataDictionary: [String:Any] = [:]
+    
     struct Constants {
         static let cornerRadius: CGFloat = 16.0
     }
@@ -254,6 +258,10 @@ class PhotoInfoViewController: UIViewController {
         isoTextField.resignFirstResponder()
         speedTextField.resignFirstResponder()
         apertureTextField.resignFirstResponder()
+        
+        let nextVC = PhotoInfo2ViewController()
+//        nextVC.metaDataDictionary = imageLoadResult
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 
