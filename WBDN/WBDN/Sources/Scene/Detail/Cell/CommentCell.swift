@@ -70,7 +70,7 @@ final class CommentCell: UIView {
         setupLayout()
     }
 
-    private func setupLayout() { 
+    private func setupLayout() {
         let profileView = UIView()
         [profileEmojiContainerView, nicknameLabel].forEach { view in
             profileView.addSubview(view)
@@ -114,9 +114,9 @@ final class CommentCell: UIView {
     }
 }
 
-@available(iOS 17, *)
-#Preview(traits: .fixedLayout(width: 500, height: 150), body: {
-    let cell = CommentCell()
-    cell.backgroundColor = .blue
-    return cell
-})
+//@available(iOS 17, *)
+//#Preview(traits: .fixedLayout(width: 500, height: 150), body: {
+//    let cell = CommentCell()
+//    cell.backgroundColor = .blue
+//    return cell
+//})

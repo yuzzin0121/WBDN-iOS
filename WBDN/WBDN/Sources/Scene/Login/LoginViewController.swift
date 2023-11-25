@@ -180,20 +180,22 @@ extension LoginViewController: UITextFieldDelegate {
         
         // 대충 로그인 API 호출
 //        self.navigationController?.pushViewController(viewController, animated: true)
+        
+        let viewController = MainTabController()
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: true, completion: nil)
     }
     
     @objc func signUp() {
-        print("go to signUp")
-        // 대충 로그인 API 호출
-//        self.navigationController?.pushViewController(viewController, animated: true)
+        present(SignUpViewController(), animated: true)
     }
 }
 
 // Preview Code
-@available(iOS 17.0, *)
-#Preview("LoginViewController") {
-    LoginViewController()
-}
+//@available(iOS 17.0, *)
+//#Preview("LoginViewController") {
+//    LoginViewController()
+//}
 
 
 
