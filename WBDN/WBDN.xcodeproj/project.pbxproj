@@ -15,7 +15,7 @@
 		6133F34E2B122AE1001B7D08 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6133F34D2B122AE1001B7D08 /* SearchTableViewCell.swift */; };
 		6133F3542B126028001B7D08 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6133F3532B126028001B7D08 /* UIImage+Extensions.swift */; };
 		61BE582B2B1263F900BB786D /* Post in Resources */ = {isa = PBXBuildFile; fileRef = 61BE582A2B1263F900BB786D /* Post */; };
-		61BE582E2B12647C00BB786D /* PhotoInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BE582D2B12647C00BB786D /* PhotoInfoViewController.swift */; };
+		61E1ECFC2B12687D0000C0E0 /* PhotoInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E1ECFB2B12687D0000C0E0 /* PhotoInfoViewController.swift */; };
 		884729FE2B12500D0073AE61 /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884729FD2B12500D0073AE61 /* AddImageViewController.swift */; };
 		88DCDC112B1219F500918BD6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DCDC102B1219F500918BD6 /* LoginViewController.swift */; };
 		88DCDC132B121AF300918BD6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DCDC122B121AF300918BD6 /* SignUpViewController.swift */; };
@@ -59,8 +59,8 @@
 		6133F3492B1220FE001B7D08 /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
 		6133F34D2B122AE1001B7D08 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		6133F3532B126028001B7D08 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
-		61BE582A2B1263F900BB786D /* Post */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Post; sourceTree = "<group>"; };
-		61BE582D2B12647C00BB786D /* PhotoInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoInfoViewController.swift; path = WBDN/Sources/Scene/Home/Post/PhotoInfoViewController.swift; sourceTree = "<group>"; };
+		61BE582A2B1263F900BB786D /* Post */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Post; path = "/Users/joyujin/Desktop/iOS/WBDN-iOS/WBDN/WBDN/Sources/Scene/Home/Post"; sourceTree = "<absolute>"; };
+		61E1ECFB2B12687D0000C0E0 /* PhotoInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoInfoViewController.swift; path = WBDN/Sources/Scene/Home/Post/PhotoInfoViewController.swift; sourceTree = "<group>"; };
 		884729FD2B12500D0073AE61 /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageViewController.swift; sourceTree = "<group>"; };
 		88DCDC102B1219F500918BD6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		88DCDC122B121AF300918BD6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -143,13 +143,13 @@
 				88DCDC142B122DEB00918BD6 /* WelcomeViewController.swift */,
 			);
 			name = Login;
-			path = "/Users/parkminseo/My Development Storage/Swift/Projects/WDA/WBDN-iOS/WBDN/WBDN/Sources/Scene/Login";
+			path = "/Users/joyujin/Desktop/iOS/WBDN-iOS/WBDN/WBDN/Sources/Scene/Login";
 			sourceTree = "<absolute>";
 		};
 		E5CF42122B11C3F200A20D28 = {
 			isa = PBXGroup;
 			children = (
-				61BE582D2B12647C00BB786D /* PhotoInfoViewController.swift */,
+				61E1ECFB2B12687D0000C0E0 /* PhotoInfoViewController.swift */,
 				E5CF421D2B11C3F200A20D28 /* WBDN */,
 				E5CF421C2B11C3F200A20D28 /* Products */,
 			);
@@ -426,7 +426,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61BE582E2B12647C00BB786D /* PhotoInfoViewController.swift in Sources */,
+				61E1ECFC2B12687D0000C0E0 /* PhotoInfoViewController.swift in Sources */,
 				88DCDC112B1219F500918BD6 /* LoginViewController.swift in Sources */,
 				88DCDC152B122DEB00918BD6 /* WelcomeViewController.swift in Sources */,
 				E5CF42642B1208C500A20D28 /* PinterestLayout.swift in Sources */,
