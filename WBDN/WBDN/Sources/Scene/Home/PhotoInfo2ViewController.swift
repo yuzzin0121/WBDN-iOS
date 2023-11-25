@@ -60,7 +60,7 @@ class PhotoInfo2ViewController: UIViewController {
     
     // 위치 아이콘
     lazy var locationImage: UIImageView = UIImageView().then {
-        $0.image = UIImage(resource: .yelloStar)
+        $0.image = UIImage.yelloStar
     }
     
     // 위치 라벨
@@ -86,7 +86,7 @@ class PhotoInfo2ViewController: UIViewController {
     
     // 날짜 아이콘
     lazy var dateImage: UIImageView = UIImageView().then {
-        $0.image = UIImage(resource: .yelloStar)
+        $0.image = UIImage.yelloStar
     }
     
     // 날짜 라벨
@@ -160,7 +160,7 @@ class PhotoInfo2ViewController: UIViewController {
     
     // 등록하시 아이콘
     lazy var confirmIcon: UIImageView = UIImageView().then {
-        $0.image = UIImage(resource: .alert)
+        $0.image = UIImage.alert
     }
     
     // 등록하시 라벨
@@ -488,11 +488,11 @@ extension PhotoInfo2ViewController: UITextViewDelegate {
     
 }
 
-// Preview Code
-@available(iOS 17.0, *)
-#Preview("PhotoInfo2ViewController") {
-    PhotoInfo2ViewController()
-}
+//// Preview Code
+//@available(iOS 17.0, *)
+//#Preview("PhotoInfo2ViewController") {
+//    PhotoInfo2ViewController()
+//}
 
 
 
