@@ -12,12 +12,13 @@
 		E5CF42232B11C3F200A20D28 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF42222B11C3F200A20D28 /* MainViewController.swift */; };
 		E5CF42282B11C3F400A20D28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5CF42272B11C3F400A20D28 /* Assets.xcassets */; };
 		E5CF422B2B11C3F400A20D28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5CF42292B11C3F400A20D28 /* LaunchScreen.storyboard */; };
-		E5CF423A2B11CEA900A20D28 /* 1.empty in Resources */ = {isa = PBXBuildFile; fileRef = E5CF42392B11CEA900A20D28 /* 1.empty */; };
 		E5CF423C2B11CEB100A20D28 /* a.empty in Resources */ = {isa = PBXBuildFile; fileRef = E5CF423B2B11CEB100A20D28 /* a.empty */; };
 		E5CF42432B11D2D700A20D28 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = E5CF42422B11D2D700A20D28 /* Moya */; };
 		E5CF42462B11D34400A20D28 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E5CF42452B11D34400A20D28 /* Kingfisher */; };
 		E5CF42492B11D40100A20D28 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E5CF42482B11D40100A20D28 /* SnapKit */; };
 		E5CF424C2B11D43500A20D28 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = E5CF424B2B11D43500A20D28 /* Then */; };
+		E5CF424E2B11D48F00A20D28 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF424D2B11D48F00A20D28 /* NetworkService.swift */; };
+		E5CF42502B11D6B800A20D28 /* WoobamAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF424F2B11D6B800A20D28 /* WoobamAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +29,9 @@
 		E5CF42272B11C3F400A20D28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5CF422A2B11C3F400A20D28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5CF422C2B11C3F400A20D28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E5CF42392B11CEA900A20D28 /* 1.empty */ = {isa = PBXFileReference; lastKnownFileType = text; path = 1.empty; sourceTree = "<group>"; };
 		E5CF423B2B11CEB100A20D28 /* a.empty */ = {isa = PBXFileReference; lastKnownFileType = text; path = a.empty; sourceTree = "<group>"; };
+		E5CF424D2B11D48F00A20D28 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		E5CF424F2B11D6B800A20D28 /* WoobamAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoobamAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +102,8 @@
 		E5CF42352B11CE5B00A20D28 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				E5CF42392B11CEA900A20D28 /* 1.empty */,
+				E5CF424D2B11D48F00A20D28 /* NetworkService.swift */,
+				E5CF424F2B11D6B800A20D28 /* WoobamAPI.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -207,7 +210,6 @@
 				E5CF423C2B11CEB100A20D28 /* a.empty in Resources */,
 				E5CF422B2B11C3F400A20D28 /* LaunchScreen.storyboard in Resources */,
 				E5CF42282B11C3F400A20D28 /* Assets.xcassets in Resources */,
-				E5CF423A2B11CEA900A20D28 /* 1.empty in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,7 +221,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5CF42232B11C3F200A20D28 /* MainViewController.swift in Sources */,
+				E5CF42502B11D6B800A20D28 /* WoobamAPI.swift in Sources */,
 				E5CF421F2B11C3F200A20D28 /* AppDelegate.swift in Sources */,
+				E5CF424E2B11D48F00A20D28 /* NetworkService.swift in Sources */,
 				E5CF42212B11C3F200A20D28 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
