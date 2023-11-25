@@ -9,23 +9,63 @@ import Moya
 import Foundation
 
 enum WoobamAPI {
+    /// signUp:
+    /// 응답 타입: BaseResponse<SignUpDto>
     case signUp(dto: SignUpDto)
+
+    /// signIn:
+    /// 응답 타입: BaseResponse<SignInDto>
     case signIn(dto: SignInDto)
+
+    /// getPosts:
+    /// 응답 타입: BaseResponse<PostListResDto>
+    case getPosts
+
+    /// createPost:
+    /// 응답 타입: BaseResponse<CreatePostDto>
     case createPost(dto: CreatePostDto)
+
+    /// findPostAll:
+    /// 응답 타입: BaseResponse<PostListResDto>
     case findPostAll(member: Member)
+
+    /// saveLike:
+    /// 응답 타입: BaseResponse<PostLikeResDto>
     case saveLike(postId: Int, member: Member)
+
+    /// getComments:
+    /// 응답 타입: BaseResponse<GetCommentsDto>
     case getComments(postId: Int)
+
+    /// postComment:
+    /// 응답 타입: BaseResponse<SaveCommentDto>
     case postComment(postId: Int, dto: SaveCommentDto)
+
+    /// getReplies:
+    /// 응답 타입: BaseResponse<GetRepliesDto>
     case getReplies(commentId: Int)
+
+    /// postReply:
+    /// 응답 타입: BaseResponse<SaveReplyDto>
     case postReply(commentId: Int, dto: SaveReplyDto)
+
+    /// findPostDetail:
+    /// 응답 타입: BaseResponse<PostDetailResDto>
     case findPostDetail(postId: Int, member: Member)
+
+    /// deletePost, deleteReply, deleteComment:
+    /// 응답 타입: BaseResponse<Void>
     case deletePost(postId: Int)
+    /// deletePost, deleteReply, deleteComment:
+    /// 응답 타입: BaseResponse<Void>
     case deleteReply(replyId: Int)
+    /// deletePost, deleteReply, deleteComment:
+    /// 응답 타입: BaseResponse<Void>
     case deleteComment(commentId: Int)
 }
 
 extension WoobamAPI: TargetType {
-    var baseURL: URL { return URL(string: "http://10.10.151.241:8080")! }
+    var baseURL: URL { return URL(string: "http://10.10.141.126:8080")! }
 
     var path: String {
         switch self {
@@ -34,6 +74,8 @@ extension WoobamAPI: TargetType {
         case .signIn:
             return "/api/sign-in"
         case .createPost:
+            return "/api/posts"
+        case .getPosts:
             return "/api/posts"
         case .findPostAll:
             return "/api/posts"
@@ -62,7 +104,7 @@ extension WoobamAPI: TargetType {
         switch self {
         case .signUp, .signIn, .createPost, .postComment, .postReply:
             return .post
-        case .findPostAll, .saveLike, .getComments, .getReplies, .findPostDetail:
+        case .findPostAll, .saveLike, .getComments, .getReplies, .findPostDetail, .getPosts:
             return .get
         case .deletePost, .deleteReply, .deleteComment:
             return .delete
@@ -75,6 +117,8 @@ extension WoobamAPI: TargetType {
             return .requestJSONEncodable(dto)
         case let .signIn(dto):
             return .requestJSONEncodable(dto)
+        case .getPosts:
+            return .requestPlain
         case let .createPost(dto):
             var multipartData = [MultipartFormData]()
             multipartData.append(MultipartFormData(provider: .data(dto.contents.data(using: .utf8)!), name: "contents"))

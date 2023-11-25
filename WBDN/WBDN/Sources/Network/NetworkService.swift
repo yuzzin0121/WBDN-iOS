@@ -24,31 +24,33 @@ enum NetworkServiceType {
 /// ```
 ///  // 추가 예정
 /// ```
-final class NetworkService<Target: TargetType>: NetworkServiceProtocol {
+final class NetworkService: NetworkServiceProtocol {
+
+    static let shared = NetworkService()
 
     // MARK: - Properties
 
-    private let provider: MoyaProvider<Target>
+    private let provider: MoyaProvider<WoobamAPI>
     private let decoder = JSONDecoder()
 
     // MARK: - Initialization
 
-    init(type: NetworkServiceType = .server, isLogEnabled: Bool = false) {
+    private init(type: NetworkServiceType = .server, isLogEnabled: Bool = true) {
         let plugins = isLogEnabled ? [NetworkLoggerPlugin(configuration: .init(logOptions: .verbose))] : []
 
         switch type {
         case .server:
-            self.provider = MoyaProvider<Target>(plugins: plugins)
+            self.provider = MoyaProvider<WoobamAPI>(plugins: plugins)
         case .stub:
             /// 서비스의 타입이 stub 일 경우, 1초 후에 sampleData 를 반환하는 provider를 생성
-            self.provider = MoyaProvider<Target>(stubClosure: MoyaProvider.delayedStub(1.0), plugins: plugins)
+            self.provider = MoyaProvider<WoobamAPI>(stubClosure: MoyaProvider.delayedStub(1.0), plugins: plugins)
         }
     }
 
     // MARK: - Public
 
     // Moya + Concurrency 으로 구현
-    func request<T: Decodable>(_ target: Target, type: T.Type) async throws -> T {
+    func request<T: Decodable>(_ target: WoobamAPI, type: T.Type) async throws -> T {
         let response = try await provider.request(target)
         let data = try decoder.decode(type, from: response.data)
         return data
