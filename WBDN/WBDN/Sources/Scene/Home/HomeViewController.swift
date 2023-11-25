@@ -28,6 +28,55 @@ final class HomeViewController: UIViewController {
     )
     private let pinterestLayout = PinterestLayout()
 
+    private let profileEmojiLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 40)
+        $0.text = "🐰"
+    }
+
+    private let headerStarImageView = UIImageView(image: .mainHeaderStars)
+
+    private lazy var profileEmojiContainerView = UIView().then {
+        $0.backgroundColor = .white
+        let width: CGFloat = 68
+        $0.snp.makeConstraints { make in
+            make.width.height.equalTo(width)
+        }
+        $0.clipsToBounds = false
+        $0.layer.cornerRadius = width / 2
+
+        $0.addSubview(profileEmojiLabel)
+        profileEmojiLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+    }
+
+    private let profileGreetingLabel = UILabel().then {
+        $0.text = "뉴진스 님을 위한\n밤하늘이에요!"
+        $0.font = .systemFont(ofSize: 15, weight: .bold)
+        $0.textColor = .white
+        $0.numberOfLines = 2
+    }
+
+    private lazy var headerStackView = UIStackView(arrangedSubviews: [
+        profileEmojiContainerView,
+        profileGreetingLabel
+    ]).then {
+        $0.alignment = .center
+        $0.spacing = 20
+    }
+
+    private let recommendationButton = UIButton().then {
+        $0.backgroundColor = .main
+        $0.setTitle("추천", for: .normal)
+        $0.titleLabel?.font = .boldSystemFont(ofSize: 17)
+        $0.setTitleColor(.black, for: .normal)
+        $0.layer.cornerRadius = 20
+    }
+
+    private let floatingButton = UIButton().then {
+        $0.backgroundColor = .main
+    }
+
     // MARK: - LifeCycle
 
     override func viewDidLoad() {
@@ -45,6 +94,8 @@ final class HomeViewController: UIViewController {
             sample3!,
             sample4!
         ])
+
+        applyGradientBackground()
     }
 
     // MARK: - Public
@@ -62,14 +113,42 @@ final class HomeViewController: UIViewController {
 extension HomeViewController {
 
     private func setupLayout() {
+        setupHeaderLayout()
+        setupRecommendationButtonLayout()
         setupCollectionViewLayout()
+    }
+
+    private func setupHeaderLayout() {
+        view.addSubview(headerStackView)
+        headerStackView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(10)
+            make.horizontalEdges.equalToSuperview().inset(16)
+        }
+
+        view.addSubview(headerStarImageView)
+        headerStarImageView.snp.makeConstraints { make in
+            make.trailing.equalToSuperview()
+            make.centerY.equalTo(headerStackView.snp.centerY).offset(-8)
+        }
+    }
+
+    private func setupRecommendationButtonLayout() {
+        view.addSubview(recommendationButton)
+        recommendationButton.snp.makeConstraints { make in
+            make.top.equalTo(headerStackView.snp.bottom).offset(16)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(70)
+            make.height.equalTo(40)
+        }
     }
 
     private func setupCollectionViewLayout() {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(recommendationButton.snp.bottom).offset(16)
+            make.bottom.horizontalEdges.equalToSuperview()
         }
+        collectionView.backgroundColor = .clear
     }
 
     private func setupCollectionView() {
@@ -81,14 +160,6 @@ extension HomeViewController {
         collectionView.collectionViewLayout = pinterestLayout
         pinterestLayout.delegate = self
     }
-
-    private func heightForPhoto(at indexPath: IndexPath) -> CGFloat {
-        guard let image = dataSource.itemIdentifier(for: indexPath) else { return 0 }
-        let imageRatio = image.size.height / image.size.width
-        let height = (view.frame.width / 2) * imageRatio
-        return height
-    }
-
 }
 
 
@@ -131,4 +202,16 @@ extension HomeViewController: PinterestLayoutDelegate {
         let cellWidth: CGFloat = (view.bounds.width - 4) / 2 // 셀 가로 크기
         return cellWidth * photoRatio
     }
+
+    private func heightForPhoto(at indexPath: IndexPath) -> CGFloat {
+        guard let image = dataSource.itemIdentifier(for: indexPath) else { return 0 }
+        let imageRatio = image.size.height / image.size.width
+        let height = (view.frame.width / 2) * imageRatio
+        return height
+    }
 }
+
+@available(iOS 17, *)
+#Preview(traits: .defaultLayout, body: {
+    HomeViewController()
+})
