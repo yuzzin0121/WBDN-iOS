@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Then
+import Kingfisher
 
 final class DetailViewController: UIViewController {
 
@@ -143,10 +144,29 @@ final class DetailViewController: UIViewController {
 
     // MARK: - Public
 
-    func configure(comments: [String]) {
+    func configure(post: Post) {
+        guard let url = URL(string: post.photoUrl) else { return }
+        photoImageView.kf.setImage(with: url)
+
+        Task {
+            let response = try await NetworkService.shared.request(.getComments(postId: post.postId), type: BaseResponse<GetCommentsDto>.self)
+            let comments = response.result?.comments
+
+            await MainActor.run {
+                if let comments {
+                    configure(comments: comments)
+                }
+            }
+        }
+
+        post.likes
+        nicknameLabel.text = post.nickname
+    }
+
+    func configure(comments: [GetCommentDto]) {
         comments.map {
             let cell = CommentCell()
-            cell.configure(nickname: "닉네임", comment: $0)
+            cell.configure(nickname: "닉네임", comment: $0.content)
             return cell
         }.forEach { cell in
             commentStackView.addArrangedSubview(cell)
@@ -297,10 +317,6 @@ final class DetailViewController: UIViewController {
             make.horizontalEdges.equalToSuperview()
             make.bottom.equalToSuperview()
         }
-
-
-        #warning("테스트 코드 - 삭제 요망")
-        configure(comments: ["코멘트1", "코멘트2", "코멘트3", "코멘트4"])
     }
 
     // 추가 촬영 정보
