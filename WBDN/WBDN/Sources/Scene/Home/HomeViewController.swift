@@ -95,7 +95,6 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         setup()
 
-
         Task {
             let response = try await NetworkService.shared.request(.getPosts, type: BaseResponse<PostListResDto>.self)
 
@@ -267,7 +266,7 @@ extension HomeViewController: PinterestLayoutDelegate {
     }
 }
 
-@available(iOS 17, *)
-#Preview(traits: .defaultLayout, body: {
-    HomeViewController()
-})
+//@available(iOS 17, *)
+//#Preview(traits: .defaultLayout, body: {
+//    HomeViewController()
+//})

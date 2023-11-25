@@ -94,8 +94,8 @@ final class FeedCell: UICollectionViewCell {
 }
 
 
-@available(iOS 17, *)
-#Preview(traits: .defaultLayout, body: {
-    let cell = FeedCell()
-    return cell
-})
+//@available(iOS 17, *)
+//#Preview(traits: .defaultLayout, body: {
+//    let cell = FeedCell()
+//    return cell
+//})

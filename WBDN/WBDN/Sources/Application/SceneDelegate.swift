@@ -20,9 +20,17 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         self.window = window
+
         window.rootViewController = Self.navigationController
         window.makeKeyAndVisible()
-
         Self.navigationController.navigationBar.topItem?.title = ""
+        
+        guard let firstVC = Self.navigationController.viewControllers.first else  { return }
+        let presentVC = LoginViewController()
+        presentVC.modalPresentationStyle = .fullScreen
+        firstVC.present(presentVC, animated: false)
+//        Self.navigationController.pushViewController(LoginViewController(), animated: false)
+        
+        
     }
 }

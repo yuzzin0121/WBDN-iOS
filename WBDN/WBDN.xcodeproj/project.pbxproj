@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		610DB51A2B127D1700BE0B4C /* PhotoInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610DB5192B127D1700BE0B4C /* PhotoInfoViewController.swift */; };
 		6133F3422B11EC51001B7D08 /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6133F3412B11EC51001B7D08 /* CustomAnnotationView.swift */; };
 		6133F3442B1207F1001B7D08 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6133F3432B1207F1001B7D08 /* CustomAnnotation.swift */; };
 		6133F3462B1215DE001B7D08 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6133F3452B1215DE001B7D08 /* Colors.xcassets */; };
@@ -14,8 +15,7 @@
 		6133F34A2B1220FE001B7D08 /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6133F3492B1220FE001B7D08 /* SearchLocationViewController.swift */; };
 		6133F34E2B122AE1001B7D08 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6133F34D2B122AE1001B7D08 /* SearchTableViewCell.swift */; };
 		6133F3542B126028001B7D08 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6133F3532B126028001B7D08 /* UIImage+Extensions.swift */; };
-		61BE582B2B1263F900BB786D /* Post in Resources */ = {isa = PBXBuildFile; fileRef = 61BE582A2B1263F900BB786D /* Post */; };
-		61BE582E2B12647C00BB786D /* PhotoInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BE582D2B12647C00BB786D /* PhotoInfoViewController.swift */; };
+		61EB2B1C2B12891A00603A25 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EB2B1B2B12891A00603A25 /* CommentCell.swift */; };
 		884729FE2B12500D0073AE61 /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884729FD2B12500D0073AE61 /* AddImageViewController.swift */; };
 		88472A002B125F510073AE61 /* PhotoInfo2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884729FF2B125F510073AE61 /* PhotoInfo2ViewController.swift */; };
 		88DCDC112B1219F500918BD6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DCDC102B1219F500918BD6 /* LoginViewController.swift */; };
@@ -26,7 +26,6 @@
 		E517A6222B128B5F00781455 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E517A6212B128B5F00781455 /* BaseResponse.swift */; };
 		E517A6242B128BB100781455 /* SignUp&Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = E517A6232B128BB100781455 /* SignUp&Member.swift */; };
 		E517A6282B12A02000781455 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E517A6272B12A02000781455 /* Date+Extension.swift */; };
-		E5C797012B1267ED008A08D6 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C797002B1267ED008A08D6 /* CommentCell.swift */; };
 		E5C797042B12684E008A08D6 /* LabelChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C797032B12684E008A08D6 /* LabelChip.swift */; };
 		E5CF421F2B11C3F200A20D28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF421E2B11C3F200A20D28 /* AppDelegate.swift */; };
 		E5CF42212B11C3F200A20D28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF42202B11C3F200A20D28 /* SceneDelegate.swift */; };
@@ -60,6 +59,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		610DB5192B127D1700BE0B4C /* PhotoInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInfoViewController.swift; sourceTree = "<group>"; };
 		6133F3412B11EC51001B7D08 /* CustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
 		6133F3432B1207F1001B7D08 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		6133F3452B1215DE001B7D08 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -67,8 +67,7 @@
 		6133F3492B1220FE001B7D08 /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
 		6133F34D2B122AE1001B7D08 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		6133F3532B126028001B7D08 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
-		61BE582A2B1263F900BB786D /* Post */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Post; sourceTree = "<group>"; };
-		61BE582D2B12647C00BB786D /* PhotoInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoInfoViewController.swift; path = WBDN/Sources/Scene/Home/Post/PhotoInfoViewController.swift; sourceTree = "<group>"; };
+		61EB2B1B2B12891A00603A25 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		884729FD2B12500D0073AE61 /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageViewController.swift; sourceTree = "<group>"; };
 		884729FF2B125F510073AE61 /* PhotoInfo2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInfo2ViewController.swift; sourceTree = "<group>"; };
 		88DCDC102B1219F500918BD6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +124,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		610DB5182B127CFC00BE0B4C /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				610DB5192B127D1700BE0B4C /* PhotoInfoViewController.swift */,
+				884729FF2B125F510073AE61 /* PhotoInfo2ViewController.swift */,
+				884729FD2B12500D0073AE61 /* AddImageViewController.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		610DB51E2B1287CA00BE0B4C /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				E5C797002B1267ED008A08D6 /* CommentCell.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		6133F3402B11EBE6001B7D08 /* Annotation */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +168,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		61EB2B1A2B1288F800603A25 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				61EB2B1B2B12891A00603A25 /* CommentCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		88DCDC0F2B1219DA00918BD6 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,20 +197,12 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		E5C796FF2B1267E7008A08D6 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				E5C797002B1267ED008A08D6 /* CommentCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
 		E5CF42122B11C3F200A20D28 = {
 			isa = PBXGroup;
 			children = (
-				61BE582D2B12647C00BB786D /* PhotoInfoViewController.swift */,
 				E5CF421D2B11C3F200A20D28 /* WBDN */,
 				E5CF421C2B11C3F200A20D28 /* Products */,
+				610DB51E2B1287CA00BE0B4C /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -282,11 +299,9 @@
 		E5CF42532B11DDEE00A20D28 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				610DB5182B127CFC00BE0B4C /* Post */,
 				E5CF42652B120E6B00A20D28 /* Cell */,
 				E5CF42222B11C3F200A20D28 /* HomeViewController.swift */,
-				61BE582A2B1263F900BB786D /* Post */,
-				884729FD2B12500D0073AE61 /* AddImageViewController.swift */,
-				884729FF2B125F510073AE61 /* PhotoInfo2ViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -349,7 +364,7 @@
 		E5CF426B2B1234E400A20D28 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				E5C796FF2B1267E7008A08D6 /* Cell */,
+				61EB2B1A2B1288F800603A25 /* Cell */,
 				E5CF426C2B1234F600A20D28 /* DetailViewController.swift */,
 			);
 			path = Detail;
@@ -451,7 +466,6 @@
 				E5CF42812B12363500A20D28 /* Pretendard-ExtraLight.otf in Resources */,
 				E5CF427A2B12363500A20D28 /* Pretendard-Regular.otf in Resources */,
 				E5CF422B2B11C3F400A20D28 /* LaunchScreen.storyboard in Resources */,
-				61BE582B2B1263F900BB786D /* Post in Resources */,
 				E5CF427B2B12363500A20D28 /* Pretendard-Black.otf in Resources */,
 				E5CF42802B12363500A20D28 /* Pretendard-Thin.otf in Resources */,
 				E5CF42282B11C3F400A20D28 /* Assets.xcassets in Resources */,
@@ -465,8 +479,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5C797012B1267ED008A08D6 /* CommentCell.swift in Sources */,
-				61BE582E2B12647C00BB786D /* PhotoInfoViewController.swift in Sources */,
 				E517A6242B128BB100781455 /* SignUp&Member.swift in Sources */,
 				88DCDC112B1219F500918BD6 /* LoginViewController.swift in Sources */,
 				88DCDC152B122DEB00918BD6 /* WelcomeViewController.swift in Sources */,
@@ -475,6 +487,7 @@
 				E5CF42232B11C3F200A20D28 /* HomeViewController.swift in Sources */,
 				E517A61A2B128AC500781455 /* Posts.swift in Sources */,
 				E5CF42572B11DE6600A20D28 /* MapViewController.swift in Sources */,
+				610DB51A2B127D1700BE0B4C /* PhotoInfoViewController.swift in Sources */,
 				6133F3422B11EC51001B7D08 /* CustomAnnotationView.swift in Sources */,
 				E5CF42592B11DE7000A20D28 /* UserViewController.swift in Sources */,
 				E5C797042B12684E008A08D6 /* LabelChip.swift in Sources */,
@@ -497,6 +510,7 @@
 				E5CF426D2B1234F600A20D28 /* DetailViewController.swift in Sources */,
 				6133F34A2B1220FE001B7D08 /* SearchLocationViewController.swift in Sources */,
 				6133F34E2B122AE1001B7D08 /* SearchTableViewCell.swift in Sources */,
+				61EB2B1C2B12891A00603A25 /* CommentCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,9 +652,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T2Q8P9627P;
+				DEVELOPMENT_TEAM = 8T2JAAS967;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WBDN/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -654,8 +669,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "neordinary-hack-r.WBDN";
+				PRODUCT_BUNDLE_IDENTIFIER = "neordinary-hack-r.WBDN1xxx";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -670,9 +686,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T2Q8P9627P;
+				DEVELOPMENT_TEAM = 8T2JAAS967;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WBDN/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -686,8 +703,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "neordinary-hack-r.WBDN";
+				PRODUCT_BUNDLE_IDENTIFIER = "neordinary-hack-r.WBDN1xxx";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

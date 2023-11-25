@@ -20,7 +20,7 @@ class SignUpViewController: UIViewController {
     }
     
     lazy var image1: UIImageView = UIImageView().then {
-        $0.image = UIImage(resource: .yelloStar)
+        $0.image = UIImage.yelloStar
         $0.tintColor = .yellow
     }
     
@@ -84,7 +84,7 @@ class SignUpViewController: UIViewController {
     }
     
     lazy var image2: UIImageView = UIImageView().then {
-        $0.image = UIImage(resource: .yelloStar)
+        $0.image = UIImage.yelloStar
     }
     
     lazy var image2Label: UILabel = UILabel().then {
@@ -166,7 +166,7 @@ class SignUpViewController: UIViewController {
     }
     
     lazy var image3: UIImageView = UIImageView().then {
-        $0.image = UIImage(resource: .yelloStar)
+        $0.image = UIImage.yelloStar
     }
     
     lazy var image3Label: UILabel = UILabel().then {
@@ -303,7 +303,7 @@ class SignUpViewController: UIViewController {
         
         titleLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(self.view.safeAreaLayoutGuide)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(12)
         }
         
         //----- 아이디
@@ -433,7 +433,7 @@ extension SignUpViewController: UITextFieldDelegate {
         
         if self.pwTextField.text == "" && self.pwCheckTextField.text == "" {
             self.pwWarnLabel.textColor = .white
-            self.pwWarnLabel.text = "조건조건조건조건"
+            self.pwWarnLabel.text = "한글/영문/숫자 중 조합하여 4자~20자 입력"
         }
         else if self.pwTextField.text == self.pwCheckTextField.text {
             print("비밀번호 일치")
@@ -461,14 +461,18 @@ extension SignUpViewController: UITextFieldDelegate {
     @objc func signUp() {
         print("go to signUp")
         // 대충 로그인 API 호출
+        
+        let viewController = WelcomeViewController()
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: true, completion: nil)
     }
 }
 
 // Preview Code
-@available(iOS 17.0, *)
-#Preview("SignUpViewController") {
-    SignUpViewController()
-}
+//@available(iOS 17.0, *)
+//#Preview("SignUpViewController") {
+//    SignUpViewController()
+//}
 
 
 
