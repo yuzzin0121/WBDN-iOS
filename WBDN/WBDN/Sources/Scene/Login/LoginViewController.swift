@@ -178,13 +178,32 @@ extension LoginViewController: UITextFieldDelegate {
         let PW = self.pwTextField.text
         print(ID,PW)
         
+        guard let id = ID else { return }
+        guard let pw = PW else { return }
+        
         // 대충 로그인 API 호출
+        
+        Task {
+            let response = try await NetworkService.shared.request(.signIn(dto: .init(loginId: id, password: pw)), type: BaseResponse<SignInResponse>.self)
+            
+            guard let accessKey = response.result?.accessKey else {
+                return
+            }
+            
+            UserDefaults.standard.set(accessKey, forKey: "accessKey")
+            
+            await MainActor.run(body: {
+                self.dismiss(animated: true)
+            })
+        }
+        
+        
 //        self.navigationController?.pushViewController(viewController, animated: true)
         
 //        let viewController = MainTabController()
 //        viewController.modalPresentationStyle = .fullScreen
 //        present(viewController, animated: true, completion: nil)
-        self.dismiss(animated: true)
+        
     }
     
     @objc func signUp() {
