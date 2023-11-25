@@ -33,15 +33,15 @@ final class MainTabController: UITabBarController {
     }
 
     private func setupTabBarRadius() {
-        tabBar.tintColor = .blue
-        tabBar.backgroundColor = .brown
+        tabBar.tintColor = .customYellow
+        tabBar.unselectedItemTintColor = .white
         tabBar.layer.cornerRadius = tabBar.frame.height * 0.8
         tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
 
     private func setupTabBarShadow() {
         UITabBar.clearShadow()
-        tabBar.layer.applyShadow(color: .white, alpha: 0.3, x: 0, y: 0, blur: 12)
+        tabBar.layer.applyShadow(color: .black, alpha: 0.3, x: 0, y: 0, blur: 12)
     }
 
     private func configureViewControllers() {
@@ -69,7 +69,7 @@ final class MainTabController: UITabBarController {
     ) -> UINavigationController {
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.tabBarItem.image = image
-        navigationController.navigationBar.tintColor = .brown // TODO: 색상 변경
+        // navigationController.navigationBar.tintColor = .brown // TODO: 색상 변경
         return navigationController
     }
 }
@@ -95,6 +95,6 @@ extension UITabBar {
     static func clearShadow() {
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage()
-        UITabBar.appearance().backgroundColor = UIColor.white
+        UITabBar.appearance().backgroundColor = .customNavy
     }
 }
