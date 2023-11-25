@@ -156,10 +156,18 @@ extension WoobamAPI: TargetType {
     
     var headers: [String: String]? {
         switch self {
-        case .createPost:
-            return ["Content-Type": "multipart/form-data"]
-        default:
+        case .signIn, .signUp:
             return ["Content-Type": "application/json"]
+        case .createPost:
+            return [
+                "Content-Type": "multipart/form-data",
+                "Authorization": "Bearer \(UserDefaults.standard.string(forKey: "accessKey") ?? "")"
+            ]
+        default:
+            return [
+                "Content-Type": "application/json",
+                "Authorization": "Bearer \(UserDefaults.standard.string(forKey: "accessKey") ?? "")"
+            ]
         }
     }
 
