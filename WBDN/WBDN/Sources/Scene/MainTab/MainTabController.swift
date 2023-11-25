@@ -52,7 +52,7 @@ final class MainTabController: UITabBarController {
 
         let mapNavigation = navigationController(
             image: UIImage(named: "map"),
-            viewController: MapViewController()
+            viewController: PhotoInfoViewController()
         )
 
         let userNavigation = navigationController(
