@@ -145,6 +145,62 @@ class PhotoInfo2ViewController: UIViewController {
         $0.isHidden = true
     }
     
+    // 등록하시겠습니까 뷰
+    lazy var confirmView: UIView = UIView().then {
+        $0.backgroundColor = .white
+        $0.layer.cornerRadius = 15
+        $0.isHidden = true
+    }
+    
+    // 등록하시겠습니까 배경뷰
+    lazy var confirmBackGroundView: UIView = UIView().then {
+        $0.backgroundColor = .white.withAlphaComponent(0.5)
+        $0.isHidden = true
+    }
+    
+    // 등록하시 아이콘
+    lazy var confirmIcon: UIImageView = UIImageView().then {
+        $0.image = UIImage(resource: .alert)
+    }
+    
+    // 등록하시 라벨
+    lazy var confirmLabel: UILabel = UILabel().then {
+        $0.text = "글을 등록하시면 수정하실 수 없습니다! \n 등록하시겠습니까?"
+        $0.font = .pretendard(size: 15, weight: .semiBold)
+        $0.textAlignment = .center
+        $0.numberOfLines = 0
+    }
+    
+    // 등록하시 취소 버튼
+    lazy var confirmCancelButton: UIButton = UIButton().then {
+        var titleAttr = AttributedString.init("취소")
+        titleAttr.font = .pretendard(size: 15, weight: .semiBold)
+
+        $0.configuration = .filled()
+        $0.configuration?.attributedTitle = titleAttr
+        $0.configuration?.baseForegroundColor = .black
+        $0.configuration?.baseBackgroundColor = .lightGray
+        $0.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20)
+        
+        $0.layer.cornerRadius = 11
+        $0.clipsToBounds = true
+    }
+    
+    // 등록하시 등록 버튼
+    lazy var confirmPostButton: UIButton = UIButton().then {
+        var titleAttr = AttributedString.init("등록하기")
+        titleAttr.font = .pretendard(size: 15, weight: .semiBold)
+
+        $0.configuration = .filled()
+        $0.configuration?.attributedTitle = titleAttr
+        $0.configuration?.baseForegroundColor = .black
+        $0.configuration?.baseBackgroundColor = .customYellow
+        $0.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20)
+        
+        $0.layer.cornerRadius = 11
+        $0.clipsToBounds = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .customNavy
@@ -169,10 +225,20 @@ class PhotoInfo2ViewController: UIViewController {
         // 탭 제스처 생성
         let dismissTapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissDatePicker))
                 
-        // addImageView에 제스처 추가
+        // datePickerBackGround에 제스처 추가
         datePickerBackGround.addGestureRecognizer(dismissTapGesture)
         
-        postButton.addTarget(self, action: #selector(postData), for: .touchUpInside)
+        // 탭 제스처 생성
+        let dismissTapGesture2 = UITapGestureRecognizer(target: self, action: #selector(dismissConfirmView))
+                
+        // confirmBackGroundView에 제스처 추가
+        confirmBackGroundView.addGestureRecognizer(dismissTapGesture2)
+        
+        confirmCancelButton.addTarget(self, action: #selector(dismissConfirmView), for: .touchUpInside)
+        
+        confirmPostButton.addTarget(self, action: #selector(postData), for: .touchUpInside)
+        
+        postButton.addTarget(self, action: #selector(goConfirm), for: .touchUpInside)
     }
     
     // MARK: Delegate
@@ -183,6 +249,8 @@ class PhotoInfo2ViewController: UIViewController {
     
     // MARK: addSubView
     private func setUpLayout() {
+        
+    
         [
             titleLabel,
             editMethodLabel,
@@ -197,8 +265,18 @@ class PhotoInfo2ViewController: UIViewController {
             addDateButton,
             postButton,
             datePickerBackGround,
-            datePicker
+            datePicker,
+            confirmBackGroundView,
+            confirmView
         ].forEach { self.view.addSubview($0)}
+        
+        [
+            confirmIcon,
+            confirmLabel,
+            confirmCancelButton,
+            confirmPostButton
+        ].forEach { confirmView.addSubview($0) }
+        
     }
     
     // MARK: setConstraint
@@ -279,6 +357,42 @@ class PhotoInfo2ViewController: UIViewController {
             $0.edges.equalToSuperview()
         }
         
+        confirmView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.left.equalToSuperview().offset(30)
+            $0.right.equalToSuperview().offset(-30)
+            $0.height.equalTo(200)
+        }
+        
+        confirmBackGroundView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        confirmIcon.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(25)
+            $0.centerX.equalToSuperview()
+        }
+        
+        confirmLabel.snp.makeConstraints {
+            $0.top.equalTo(confirmIcon.snp.bottom).offset(13)
+            $0.left.equalToSuperview().offset(35)
+            $0.right.equalToSuperview().offset(-35)
+        }
+//        
+        confirmCancelButton.snp.makeConstraints {
+            $0.top.equalTo(confirmLabel.snp.bottom).offset(12)
+            $0.centerX.equalToSuperview().offset(-80)
+            $0.height.equalTo(55)
+            $0.width.equalTo(145)
+        }
+//        
+        confirmPostButton.snp.makeConstraints {
+            $0.top.equalTo(confirmLabel.snp.bottom).offset(12)
+            $0.centerX.equalToSuperview().offset(80)
+            $0.height.equalTo(55)
+            $0.width.equalTo(145)
+        }
+        
         //------등록하기 버튼
         
         postButton.snp.makeConstraints {
@@ -356,10 +470,22 @@ extension PhotoInfo2ViewController: UITextViewDelegate {
         datePickerBackGround.isHidden = true
     }
     
-    @objc func postData() {
-        print("post data")
-        // 대충 data post API 호출
+    
+    @objc func dismissConfirmView() {
+        confirmView.isHidden = true
+        confirmBackGroundView.isHidden = true
     }
+    
+    @objc func goConfirm() {
+        confirmView.isHidden = false
+        confirmBackGroundView.isHidden = false
+    }
+    
+    @objc func postData() {
+        print("data POST")
+    }
+    
+    
 }
 
 // Preview Code
