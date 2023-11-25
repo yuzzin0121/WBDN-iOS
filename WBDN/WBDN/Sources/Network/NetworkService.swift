@@ -47,7 +47,7 @@ final class NetworkService<Target: TargetType>: NetworkServiceProtocol {
 
     // MARK: - Public
 
-    // Moya + Combine 으로 구현
+    // Moya + Concurrency 으로 구현
     func request<T: Decodable>(_ target: Target, type: T.Type) async throws -> T {
         let response = try await provider.request(target)
         let data = try decoder.decode(type, from: response.data)
