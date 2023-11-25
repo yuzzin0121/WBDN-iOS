@@ -449,22 +449,34 @@ extension SignUpViewController: UITextFieldDelegate {
     
     @objc func idDupCheck() {
         let ID = self.idTextField.text
-        print(ID)
+        guard let id = ID else { return }
+        idWarnLabel.text = "사용 가능한 아이디입니다."
+        idWarnLabel.textColor = .customYellow
         
     }
     
     @objc func nickNameDupCheck() {
         let nickName = self.nickNameTextField.text
-        print(nickName)
+        nickNameWarnLabel.text = "사용 가능한 닉네임입니다."
+        nickNameWarnLabel.textColor = .customYellow
     }
     
     @objc func signUp() {
         print("go to signUp")
-        // 대충 로그인 API 호출
+        guard let id = idTextField.text else { return }
+        guard let pw = pwTextField.text else { return }
+        guard let nickname = nickNameTextField.text else { return }
         
-        let viewController = WelcomeViewController()
-        viewController.modalPresentationStyle = .fullScreen
-        present(viewController, animated: true, completion: nil)
+        // 대충 로그인 API 호출
+        Task {
+            let response = try await NetworkService.shared.request(.signUp(dto: .init(loginId: id, password: pw, nickname: nickname)), type: BaseResponse<SignUpResponse>.self)
+            
+            guard let data = response.result?.memberId else { return }
+            
+            let viewController = WelcomeViewController()
+            viewController.modalPresentationStyle = .fullScreen
+            present(viewController, animated: true, completion: nil)
+        }
     }
 }
 
