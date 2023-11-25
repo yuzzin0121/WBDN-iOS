@@ -22,6 +22,7 @@
 		E5CF42522B11D98300A20D28 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF42512B11D98300A20D28 /* MainTabController.swift */; };
 		E5CF42572B11DE6600A20D28 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF42562B11DE6600A20D28 /* MapViewController.swift */; };
 		E5CF42592B11DE7000A20D28 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF42582B11DE7000A20D28 /* UserViewController.swift */; };
+		E5CF42612B11ED2D00A20D28 /* UIViewController+Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF42602B11ED2D00A20D28 /* UIViewController+Background.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		E5CF42512B11D98300A20D28 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		E5CF42562B11DE6600A20D28 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E5CF42582B11DE7000A20D28 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		E5CF42602B11ED2D00A20D28 /* UIViewController+Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Background.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 		E5CF42382B11CE7400A20D28 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				E5CF425E2B11ED2100A20D28 /* Util */,
 				E5CF42322B11CE5100A20D28 /* Application */,
 				E5CF42352B11CE5B00A20D28 /* Network */,
 				E5CF42342B11CE5700A20D28 /* Repository */,
@@ -168,6 +171,22 @@
 				E5CF42582B11DE7000A20D28 /* UserViewController.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		E5CF425E2B11ED2100A20D28 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				E5CF425F2B11ED2500A20D28 /* Extensions */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		E5CF425F2B11ED2500A20D28 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E5CF42602B11ED2D00A20D28 /* UIViewController+Background.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +280,7 @@
 				E5CF421F2B11C3F200A20D28 /* AppDelegate.swift in Sources */,
 				E5CF424E2B11D48F00A20D28 /* NetworkService.swift in Sources */,
 				E5CF42212B11C3F200A20D28 /* SceneDelegate.swift in Sources */,
+				E5CF42612B11ED2D00A20D28 /* UIViewController+Background.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
