@@ -23,13 +23,14 @@ final class FeedCell: UICollectionViewCell {
     private let starCountLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 13, weight: .semibold)
         $0.text = "0"
+        $0.textColor = .customGray
     }
 
     private let nicknameLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 13, weight: .semibold)
         $0.text = "닉네임"
+        $0.textColor = .white
     }
-
 
     private let starImage = UIImageView().then {
         $0.image = UIImage(named: "star")
@@ -90,3 +91,9 @@ final class FeedCell: UICollectionViewCell {
     }
 }
 
+
+@available(iOS 17, *)
+#Preview(traits: .defaultLayout, body: {
+    let cell = FeedCell()
+    return cell
+})

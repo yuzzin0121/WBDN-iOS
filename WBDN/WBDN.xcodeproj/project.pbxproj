@@ -151,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				E5CF42272B11C3F400A20D28 /* Assets.xcassets */,
+				E5CF42682B12238F00A20D28 /* New Group */,
 				6133F3452B1215DE001B7D08 /* Colors.xcassets */,
 				E5CF42292B11C3F400A20D28 /* LaunchScreen.storyboard */,
 				E5CF422C2B11C3F400A20D28 /* Info.plist */,
@@ -226,6 +227,13 @@
 				E5CF42662B120E7A00A20D28 /* FeedCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		E5CF42682B12238F00A20D28 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
