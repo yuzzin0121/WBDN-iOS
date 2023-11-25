@@ -39,17 +39,17 @@ struct PostDetailResDto: Codable {
     let fnumber: String?
 }
 
-struct GetPostListDto: Codable {
+struct PostListResDto: Codable {
+    let memberId: Int
+    let nickname: String
+    let postListDtos: [Post]
+}
+
+struct Post: Codable {
     let postId: Int
     let nickname: String
     let photoUrl: String
     let likes: Int
-}
-
-struct PostListResDto: Codable {
-    let memberId: Int
-    let nickname: String
-    let postListDtos: [GetPostListDto]
 }
 
 struct PostLikeResDto: Codable {

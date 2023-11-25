@@ -104,6 +104,17 @@ final class HomeViewController: UIViewController {
 
         ])
 
+        Task {
+            do {
+                let response = try await NetworkService.shared.request(.getPosts, type: BaseResponse<PostListResDto>.self)
+                print(response)
+                let posts = response.result?.postListDtos
+                print("post?", posts)
+            } catch {
+                print("error", error)
+            }
+        }
+
         applyGradientBackground()
     }
 
