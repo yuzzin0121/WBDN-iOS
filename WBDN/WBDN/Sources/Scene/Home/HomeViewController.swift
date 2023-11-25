@@ -33,8 +33,6 @@ final class HomeViewController: UIViewController {
         $0.text = "🐰"
     }
 
-    private let headerStarImageView = UIImageView(image: .mainHeaderStars)
-
     private lazy var profileEmojiContainerView = UIView().then {
         $0.backgroundColor = .white
         let width: CGFloat = 68
@@ -49,6 +47,8 @@ final class HomeViewController: UIViewController {
             make.center.equalToSuperview()
         }
     }
+
+    private let headerStarImageView = UIImageView(image: .mainHeaderStars)
 
     private let profileGreetingLabel = UILabel().then {
         $0.text = "뉴진스 님을 위한\n밤하늘이에요!"
@@ -73,7 +73,7 @@ final class HomeViewController: UIViewController {
         $0.layer.cornerRadius = 20
     }
 
-    private let floatingButton = UIButton().then {
+    private lazy var floatingButton = UIButton().then {
         var config = UIButton.Configuration.filled()
         config.baseBackgroundColor = .customYellow
         config.baseForegroundColor = .black
@@ -84,6 +84,8 @@ final class HomeViewController: UIViewController {
         $0.configuration = config
         $0.layer.shadowRadius = 10
         $0.layer.shadowOpacity = 0.3
+
+        $0.addTarget(self, action: #selector(tappedFloatingButton), for: .touchUpInside)
     }
 
     // MARK: - LifeCycle
@@ -113,6 +115,16 @@ final class HomeViewController: UIViewController {
         setupLayout()
         setupCollectionView()
     }
+
+    // MARK: - Actions
+
+    @objc private func tappedFloatingButton() {
+        let addImageViewController = AddImageViewController()
+        
+        // 탭바를 가리기 위해, Scene 단위의 navigation에서 이동
+        SceneDelegate.navigationController
+            .pushViewController(addImageViewController, animated: true)
+    }
 }
 
 // MARK: - Layout
@@ -129,7 +141,8 @@ extension HomeViewController {
     private func setupHeaderLayout() {
         view.addSubview(headerStackView)
         headerStackView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(10)
+            // make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(10)
+            make.top.equalToSuperview().offset(80)
             make.horizontalEdges.equalToSuperview().inset(16)
         }
 
@@ -176,6 +189,7 @@ extension HomeViewController {
 
         collectionView.collectionViewLayout = pinterestLayout
         pinterestLayout.delegate = self
+        collectionView.delegate = self
     }
 }
 
@@ -206,6 +220,18 @@ extension HomeViewController {
         snapshot.appendSections([.list])
         snapshot.appendItems(images, toSection: .list)
         dataSource.apply(snapshot, animatingDifferences: false)
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, 
+                        didSelectItemAt indexPath: IndexPath) {
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+        let detailViewController = DetailViewController()
+        // navigationController?.pushViewController(detailViewController, animated: true)
+        SceneDelegate.navigationController.pushViewController(detailViewController, animated: true)
     }
 }
 

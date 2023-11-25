@@ -114,9 +114,9 @@ final class CommentCell: UIView {
     }
 }
 
-//@available(iOS 17, *)
-//#Preview(traits: .fixedLayout(width: 500, height: 150), body: {
-//    let cell = CommentCell()
-//    cell.backgroundColor = .blue
-//    return cell
-//})
+@available(iOS 17, *)
+#Preview(traits: .fixedLayout(width: 500, height: 150), body: {
+    let cell = CommentCell()
+    cell.backgroundColor = .blue
+    return cell
+})
