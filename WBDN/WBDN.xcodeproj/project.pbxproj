@@ -12,8 +12,13 @@
 		E5CF42232B11C3F200A20D28 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF42222B11C3F200A20D28 /* MainViewController.swift */; };
 		E5CF42282B11C3F400A20D28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5CF42272B11C3F400A20D28 /* Assets.xcassets */; };
 		E5CF422B2B11C3F400A20D28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5CF42292B11C3F400A20D28 /* LaunchScreen.storyboard */; };
-		E5CF423A2B11CEA900A20D28 /* 1.empty in Resources */ = {isa = PBXBuildFile; fileRef = E5CF42392B11CEA900A20D28 /* 1.empty */; };
 		E5CF423C2B11CEB100A20D28 /* a.empty in Resources */ = {isa = PBXBuildFile; fileRef = E5CF423B2B11CEB100A20D28 /* a.empty */; };
+		E5CF42432B11D2D700A20D28 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = E5CF42422B11D2D700A20D28 /* Moya */; };
+		E5CF42462B11D34400A20D28 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E5CF42452B11D34400A20D28 /* Kingfisher */; };
+		E5CF42492B11D40100A20D28 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E5CF42482B11D40100A20D28 /* SnapKit */; };
+		E5CF424C2B11D43500A20D28 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = E5CF424B2B11D43500A20D28 /* Then */; };
+		E5CF424E2B11D48F00A20D28 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF424D2B11D48F00A20D28 /* NetworkService.swift */; };
+		E5CF42502B11D6B800A20D28 /* WoobamAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF424F2B11D6B800A20D28 /* WoobamAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,8 +29,9 @@
 		E5CF42272B11C3F400A20D28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5CF422A2B11C3F400A20D28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5CF422C2B11C3F400A20D28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E5CF42392B11CEA900A20D28 /* 1.empty */ = {isa = PBXFileReference; lastKnownFileType = text; path = 1.empty; sourceTree = "<group>"; };
 		E5CF423B2B11CEB100A20D28 /* a.empty */ = {isa = PBXFileReference; lastKnownFileType = text; path = a.empty; sourceTree = "<group>"; };
+		E5CF424D2B11D48F00A20D28 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		E5CF424F2B11D6B800A20D28 /* WoobamAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WoobamAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +39,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5CF42492B11D40100A20D28 /* SnapKit in Frameworks */,
+				E5CF42462B11D34400A20D28 /* Kingfisher in Frameworks */,
+				E5CF42432B11D2D700A20D28 /* Moya in Frameworks */,
+				E5CF424C2B11D43500A20D28 /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +102,8 @@
 		E5CF42352B11CE5B00A20D28 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				E5CF42392B11CEA900A20D28 /* 1.empty */,
+				E5CF424D2B11D48F00A20D28 /* NetworkService.swift */,
+				E5CF424F2B11D6B800A20D28 /* WoobamAPI.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -142,6 +153,12 @@
 			dependencies = (
 			);
 			name = WBDN;
+			packageProductDependencies = (
+				E5CF42422B11D2D700A20D28 /* Moya */,
+				E5CF42452B11D34400A20D28 /* Kingfisher */,
+				E5CF42482B11D40100A20D28 /* SnapKit */,
+				E5CF424B2B11D43500A20D28 /* Then */,
+			);
 			productName = WBDN;
 			productReference = E5CF421B2B11C3F200A20D28 /* WBDN.app */;
 			productType = "com.apple.product-type.application";
@@ -170,6 +187,12 @@
 				Base,
 			);
 			mainGroup = E5CF42122B11C3F200A20D28;
+			packageReferences = (
+				E5CF42412B11D2D700A20D28 /* XCRemoteSwiftPackageReference "Moya" */,
+				E5CF42442B11D34400A20D28 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				E5CF42472B11D40100A20D28 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				E5CF424A2B11D43500A20D28 /* XCRemoteSwiftPackageReference "Then" */,
+			);
 			productRefGroup = E5CF421C2B11C3F200A20D28 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -187,7 +210,6 @@
 				E5CF423C2B11CEB100A20D28 /* a.empty in Resources */,
 				E5CF422B2B11C3F400A20D28 /* LaunchScreen.storyboard in Resources */,
 				E5CF42282B11C3F400A20D28 /* Assets.xcassets in Resources */,
-				E5CF423A2B11CEA900A20D28 /* 1.empty in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,7 +221,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5CF42232B11C3F200A20D28 /* MainViewController.swift in Sources */,
+				E5CF42502B11D6B800A20D28 /* WoobamAPI.swift in Sources */,
 				E5CF421F2B11C3F200A20D28 /* AppDelegate.swift in Sources */,
+				E5CF424E2B11D48F00A20D28 /* NetworkService.swift in Sources */,
 				E5CF42212B11C3F200A20D28 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,8 +373,9 @@
 				INFOPLIST_FILE = WBDN/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -359,9 +384,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "neordinary-hack-r.WBDN";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -377,8 +405,9 @@
 				INFOPLIST_FILE = WBDN/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -387,9 +416,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "neordinary-hack-r.WBDN";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -415,6 +447,64 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E5CF42412B11D2D700A20D28 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
+		E5CF42442B11D34400A20D28 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.10.0;
+			};
+		};
+		E5CF42472B11D40100A20D28 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+		E5CF424A2B11D43500A20D28 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:devxoul/Then.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E5CF42422B11D2D700A20D28 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5CF42412B11D2D700A20D28 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		E5CF42452B11D34400A20D28 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5CF42442B11D34400A20D28 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		E5CF42482B11D40100A20D28 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5CF42472B11D40100A20D28 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		E5CF424B2B11D43500A20D28 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5CF424A2B11D43500A20D28 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E5CF42132B11C3F200A20D28 /* Project object */;
 }
