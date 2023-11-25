@@ -95,12 +95,12 @@ final class HomeViewController: UIViewController {
         setup()
 
         applySnapshot(with: [
-            UIImage(named: "test1")!,
-            UIImage(named: "test2")!,
-            UIImage(named: "test3")!,
-            UIImage(named: "test4")!,
-            UIImage(named: "test5")!,
-            UIImage(named: "test6")!,
+//            UIImage(named: "test1")!,
+//            UIImage(named: "test2")!,
+//            UIImage(named: "test3")!,
+//            UIImage(named: "test4")!,
+//            UIImage(named: "test5")!,
+//            UIImage(named: "test6")!,
 
         ])
 
@@ -254,7 +254,7 @@ extension HomeViewController: PinterestLayoutDelegate {
     }
 }
 
-@available(iOS 17, *)
-#Preview(traits: .defaultLayout, body: {
-    HomeViewController()
-})
+//@available(iOS 17, *)
+//#Preview(traits: .defaultLayout, body: {
+//    HomeViewController()
+//})
