@@ -12,6 +12,7 @@
 		6133F3462B1215DE001B7D08 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6133F3452B1215DE001B7D08 /* Colors.xcassets */; };
 		88DCDC112B1219F500918BD6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DCDC102B1219F500918BD6 /* LoginViewController.swift */; };
 		88DCDC132B121AF300918BD6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DCDC122B121AF300918BD6 /* SignUpViewController.swift */; };
+		88DCDC152B122DEB00918BD6 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DCDC142B122DEB00918BD6 /* WelcomeViewController.swift */; };
 		E5CF421F2B11C3F200A20D28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF421E2B11C3F200A20D28 /* AppDelegate.swift */; };
 		E5CF42212B11C3F200A20D28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF42202B11C3F200A20D28 /* SceneDelegate.swift */; };
 		E5CF42232B11C3F200A20D28 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF42222B11C3F200A20D28 /* HomeViewController.swift */; };
@@ -38,6 +39,7 @@
 		6133F3452B1215DE001B7D08 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		88DCDC102B1219F500918BD6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		88DCDC122B121AF300918BD6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		88DCDC142B122DEB00918BD6 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		E5CF421B2B11C3F200A20D28 /* WBDN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WBDN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5CF421E2B11C3F200A20D28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5CF42202B11C3F200A20D28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			children = (
 				88DCDC102B1219F500918BD6 /* LoginViewController.swift */,
 				88DCDC122B121AF300918BD6 /* SignUpViewController.swift */,
+				88DCDC142B122DEB00918BD6 /* WelcomeViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88DCDC112B1219F500918BD6 /* LoginViewController.swift in Sources */,
+				88DCDC152B122DEB00918BD6 /* WelcomeViewController.swift in Sources */,
 				E5CF42642B1208C500A20D28 /* PinterestLayout.swift in Sources */,
 				E5CF42232B11C3F200A20D28 /* HomeViewController.swift in Sources */,
 				E5CF42572B11DE6600A20D28 /* MapViewController.swift in Sources */,
