@@ -1,15 +1,107 @@
+
 //
 //  MapViewController.swift
 //  WBDN
 //
-//  Created by Mason Kim on 11/25/23.
+//  Created by 조유진 on 2023/11/25.
 //
 
 import UIKit
+import SnapKit
+import Then
+import MapKit
+import CoreLocation
 
-final class MapViewController: UIViewController {
+
+// MARK: - 지도 화면
+class MapViewController: UIViewController {
+    // MARK: Variables
+    
+    // 위치 관리 매니저
+    private let locationManager = CLLocationManager()
+    // 지도 뷰
+    private let mapView = MKMapView()
+    // 현재 지도의 중심 위치 + 스케일
+    private var mapCurrentLocation: MKCoordinateRegion?
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        applyGradientBackground()
+        setUpDelegate()
+        setUpLayout()
+        setUpView()
+        setUpConstraint()
+    }
+
+    // MARK: View
+    func setUpView() {
+        self.view.backgroundColor = .white
+        
+        locationManager.requestWhenInUseAuthorization()     // 권한 확인
+        locationManager.startUpdatingLocation() // 위치 업데이트
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest   // 가장 높은 정확도의 위치 정보를 요청
+        
+        
+        // 지도 초기 설정
+        mapView.showsUserLocation = true   // 사용자의 현재 위치 안보이게
+        mapView.mapType = MKMapType.standard    // 일반적인 지도 스타일
+        mapView.isZoomEnabled = true    // 줌 가능하게
+        mapView.isScrollEnabled = true  // 이동 가능하게
+        mapView.isRotateEnabled = true  // 회전 가능하게
+        
+        
+    }
+    
+    // MARK: Delegate
+    func setUpDelegate() {
+//        mapView.delegate = self
+    }
+    
+    // MARK: Layout
+    func setUpLayout() {
+        self.view.addSubview(mapView)
+    }
+    
+    // MARK: Constraint
+    func setUpConstraint() {
+        self.view.addSubview(mapView)
+        // 지도 뷰
+        mapView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
+    
+    // MARK: - MapView에 Annotation 추가
+    private func addAnnotations() {
+        // annotation의 위치 설정
+//        let annotation = CustomAnnotation(coordinate: ")
+//
+//        // annotation 이미지 이름 설정
+//        annotation.imageName = "pin"
+//        mapView.addAnnotation(annotation)
+    }
+    
+    // 재사용을 위해 식별자 생성
+    private func registerMapAnnotationView() {
+        mapView.register(CustomAnnotationView.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(CustomAnnotationView.self))
+    }
+    
+    // 식별자를 갖고 Annotation view todtjd
+    private func setupAnnotationView(for annotation: CustomAnnotation, on mapView: MKMapView) -> MKAnnotationView {
+        // dequeueReusableAnnotationView: 식별자를 확인하여 사용가능한 뷰가 있으면 해당 뷰를 반환
+        return mapView.dequeueReusableAnnotationView(withIdentifier: NSStringFromClass(CustomAnnotationView.self), for: annotation)
+
     }
 }
+
+//extension MapViewController: MKMapViewDelegate {
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//        guard !annotation.isKind(of: MKUserLocation.self) else { return nil }
+//
+//        var annotationView: MKAnnotationView?
+//
+//
+//    }
+//
+//}

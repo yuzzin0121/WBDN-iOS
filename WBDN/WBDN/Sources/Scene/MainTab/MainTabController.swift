@@ -74,10 +74,6 @@ final class MainTabController: UITabBarController {
     }
 }
 
-#Preview {
-    MainTabController()
-}
-
 extension CALayer {
     // Sketch 스타일의 그림자를 생성하는 유틸리티 함수
     func applyShadow(
