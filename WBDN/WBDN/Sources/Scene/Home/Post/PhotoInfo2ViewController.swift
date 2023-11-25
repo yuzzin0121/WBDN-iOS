@@ -11,10 +11,15 @@ import Then
 import MapKit
 
 class PhotoInfo2ViewController: UIViewController {
-    var metaDataDictionary: [String:Any] = [:]
     
     private var location = CLLocationCoordinate2D()
     private var date = Date()
+    var device = ""
+    var iso = ""
+    var shutterSpeed = ""
+    var fnum = ""
+    var selectedImage = UIImage()
+    
     
     // "추가 정보를 입력해주세요!" 라벨
     lazy var titleLabel: UILabel = UILabel().then {
@@ -213,13 +218,6 @@ class PhotoInfo2ViewController: UIViewController {
         
         
     }//: viewDidLoad()
-    
-    override func viewWillAppear(_ animated: Bool) {
-        guard let isoValue = metaDataDictionary["ISOSpeedRatings"] as? Float else {
-            return
-        }
-        print(String(format: "%.2f", isoValue))
-    }
     
     // MARK: set component config
     private func setUpView() {
@@ -446,6 +444,10 @@ extension PhotoInfo2ViewController: UITextViewDelegate {
         return true
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     // 위치 검색 VC 팝업
     @objc func presentLocationPopUp() {
         print("Set Location")
@@ -454,6 +456,7 @@ extension PhotoInfo2ViewController: UITextViewDelegate {
         searchLocationVC.completionHandler = {
             [weak self] coordinate in
                 
+            self?.location = coordinate
             print(coordinate)
         }
        
@@ -491,6 +494,26 @@ extension PhotoInfo2ViewController: UITextViewDelegate {
     
     @objc func postData() {
         print("data POST")
+        let CPD = CreatePostDto(
+            device: self.device,
+            shutterSpeed: self.shutterSpeed,
+            editContents: self.editMethodTextView.text,
+            additionalContents: self.commentTextView.text,
+            latitude: self.location.latitude,
+            longitude: self.location.longitude,
+            shootingDate: self.date.serverDateString,
+            iso: self.iso,
+            fnumber: self.fnum)
+        
+        Task {
+            do {
+                let response = try await NetworkService.shared.request(.createPost(photo: self.selectedImage.pngData() ?? Data(), dto: CPD), type: BaseResponse<CreatePostDto>.self)
+                print(response)
+                self.navigationController?.popToRootViewController(animated: true)
+            } catch {
+                print("err :", error)
+            }
+        }
     }
     
     
