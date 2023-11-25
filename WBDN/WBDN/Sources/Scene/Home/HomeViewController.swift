@@ -73,8 +73,21 @@ final class HomeViewController: UIViewController {
         $0.layer.cornerRadius = 20
     }
 
+    // private let floatingButton = UIButton().then {
+    //     $0.backgroundColor = .main
+    // }
+
     private let floatingButton = UIButton().then {
-        $0.backgroundColor = .main
+        var config = UIButton.Configuration.filled()
+        config.baseBackgroundColor = .main
+        config.baseForegroundColor = .black
+        config.cornerStyle = .capsule
+        let image = UIImage(systemName: "plus")?
+            .withConfiguration(UIImage.SymbolConfiguration(pointSize: 20, weight: .medium))
+        config.image = image
+        $0.configuration = config
+        $0.layer.shadowRadius = 10
+        $0.layer.shadowOpacity = 0.3
     }
 
     // MARK: - LifeCycle
@@ -116,6 +129,7 @@ extension HomeViewController {
         setupHeaderLayout()
         setupRecommendationButtonLayout()
         setupCollectionViewLayout()
+        setupFloatingButtonLayout()
     }
 
     private func setupHeaderLayout() {
@@ -139,6 +153,15 @@ extension HomeViewController {
             make.centerX.equalToSuperview()
             make.width.equalTo(70)
             make.height.equalTo(40)
+        }
+    }
+
+    private func setupFloatingButtonLayout() {
+        view.addSubview(floatingButton)
+        floatingButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-40)
+            make.width.height.equalTo(60)
         }
     }
 
