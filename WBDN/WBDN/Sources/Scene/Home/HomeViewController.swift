@@ -232,7 +232,7 @@ extension HomeViewController: UICollectionViewDelegate {
                         didSelectItemAt indexPath: IndexPath) {
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
         let detailViewController = DetailViewController()
-        // navigationController?.pushViewController(detailViewController, animated: true)
+        detailViewController.configure(post: item)
         SceneDelegate.navigationController.pushViewController(detailViewController, animated: true)
     }
 }
