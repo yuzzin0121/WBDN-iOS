@@ -13,8 +13,6 @@
 		6133F3482B121C1E001B7D08 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6133F3472B121C1E001B7D08 /* UIColor+Extensions.swift */; };
 		6133F34A2B1220FE001B7D08 /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6133F3492B1220FE001B7D08 /* SearchLocationViewController.swift */; };
 		6133F34E2B122AE1001B7D08 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6133F34D2B122AE1001B7D08 /* SearchTableViewCell.swift */; };
-		E5C797012B1267ED008A08D6 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C797002B1267ED008A08D6 /* CommentCell.swift */; };
-		E5C797042B12684E008A08D6 /* LabelChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C797032B12684E008A08D6 /* LabelChip.swift */; };
 		6133F3542B126028001B7D08 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6133F3532B126028001B7D08 /* UIImage+Extensions.swift */; };
 		61BE582B2B1263F900BB786D /* Post in Resources */ = {isa = PBXBuildFile; fileRef = 61BE582A2B1263F900BB786D /* Post */; };
 		61BE582E2B12647C00BB786D /* PhotoInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BE582D2B12647C00BB786D /* PhotoInfoViewController.swift */; };
@@ -23,6 +21,8 @@
 		88DCDC112B1219F500918BD6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DCDC102B1219F500918BD6 /* LoginViewController.swift */; };
 		88DCDC132B121AF300918BD6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DCDC122B121AF300918BD6 /* SignUpViewController.swift */; };
 		88DCDC152B122DEB00918BD6 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DCDC142B122DEB00918BD6 /* WelcomeViewController.swift */; };
+		E5C797012B1267ED008A08D6 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C797002B1267ED008A08D6 /* CommentCell.swift */; };
+		E5C797042B12684E008A08D6 /* LabelChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C797032B12684E008A08D6 /* LabelChip.swift */; };
 		E5CF421F2B11C3F200A20D28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF421E2B11C3F200A20D28 /* AppDelegate.swift */; };
 		E5CF42212B11C3F200A20D28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF42202B11C3F200A20D28 /* SceneDelegate.swift */; };
 		E5CF42232B11C3F200A20D28 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CF42222B11C3F200A20D28 /* HomeViewController.swift */; };
@@ -61,8 +61,6 @@
 		6133F3472B121C1E001B7D08 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		6133F3492B1220FE001B7D08 /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
 		6133F34D2B122AE1001B7D08 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
-		E5C797002B1267ED008A08D6 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
-		E5C797032B12684E008A08D6 /* LabelChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelChip.swift; sourceTree = "<group>"; };
 		6133F3532B126028001B7D08 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		61BE582A2B1263F900BB786D /* Post */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Post; sourceTree = "<group>"; };
 		61BE582D2B12647C00BB786D /* PhotoInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoInfoViewController.swift; path = WBDN/Sources/Scene/Home/Post/PhotoInfoViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +69,8 @@
 		88DCDC102B1219F500918BD6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		88DCDC122B121AF300918BD6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		88DCDC142B122DEB00918BD6 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		E5C797002B1267ED008A08D6 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		E5C797032B12684E008A08D6 /* LabelChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelChip.swift; sourceTree = "<group>"; };
 		E5CF421B2B11C3F200A20D28 /* WBDN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WBDN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5CF421E2B11C3F200A20D28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5CF42202B11C3F200A20D28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,14 +141,6 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		E5C796FF2B1267E7008A08D6 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				E5C797002B1267ED008A08D6 /* CommentCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-    };
 		88DCDC0F2B1219DA00918BD6 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,9 +148,16 @@
 				88DCDC122B121AF300918BD6 /* SignUpViewController.swift */,
 				88DCDC142B122DEB00918BD6 /* WelcomeViewController.swift */,
 			);
-			name = Login;
-			path = "/Users/parkminseo/My Development Storage/Swift/Projects/WDA/WBDN-iOS/WBDN/WBDN/Sources/Scene/Login";
-			sourceTree = "<absolute>";
+			path = Login;
+			sourceTree = "<group>";
+		};
+		E5C796FF2B1267E7008A08D6 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E5C797002B1267ED008A08D6 /* CommentCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
 		};
 		E5CF42122B11C3F200A20D28 = {
 			isa = PBXGroup;

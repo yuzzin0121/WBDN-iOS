@@ -16,7 +16,9 @@ final class DetailViewController: UIViewController {
     // MARK: - UI Components
 
     public let mainScrollView = UIScrollView().then {
-        $0.contentInsetAdjustmentBehavior = .always
+        // $0.contentInsetAdjustmentBehavior = .never
+        $0.showsVerticalScrollIndicator = false
+        $0.contentInsetAdjustmentBehavior = .automatic
     }
     private let scrollViewContainerView = UIView()
     private let containerView = UIView()
@@ -175,7 +177,8 @@ final class DetailViewController: UIViewController {
         scrollViewContainerView.addSubview(containerView)
         containerView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(16)
-            $0.verticalEdges.equalToSuperview()
+            $0.top.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview()
         }
 
         // 프로필 설정
