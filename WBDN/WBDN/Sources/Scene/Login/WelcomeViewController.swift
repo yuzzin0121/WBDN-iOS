@@ -10,7 +10,9 @@ import SnapKit
 import Then
 
 class WelcomeViewController: UIViewController {
-    
+
+    var goToLoginCompletion: (() -> Void)?
+
     // "환영합니다" 제목 라벨
     lazy var titleLabel: UILabel = UILabel().then {
         $0.text = "환영합니다!"
@@ -112,9 +114,11 @@ extension WelcomeViewController {
     
     @objc func goLogin() {
         print("go to Login")
-        let viewController = LoginViewController()
-        viewController.modalPresentationStyle = .fullScreen
-        present(viewController, animated: true, completion: nil)
+        goToLoginCompletion?()
+        dismiss(animated: false)
+        // let viewController = LoginViewController()
+        // viewController.modalPresentationStyle = .fullScreen
+        // present(viewController, animated: true, completion: nil)
     }
 
 }
@@ -124,7 +128,3 @@ extension WelcomeViewController {
 //#Preview("WelcomeViewController") {
 //    WelcomeViewController()
 //}
-
-
-
-

@@ -207,7 +207,8 @@ extension LoginViewController: UITextFieldDelegate {
     }
     
     @objc func signUp() {
-        present(SignUpViewController(), animated: true)
+        let signUpViewController = SignUpViewController()
+        present(signUpViewController, animated: true)
     }
 }
 

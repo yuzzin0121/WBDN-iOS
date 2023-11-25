@@ -474,6 +474,9 @@ extension SignUpViewController: UITextFieldDelegate {
             guard let data = response.result?.memberId else { return }
             
             let viewController = WelcomeViewController()
+            viewController.goToLoginCompletion = {
+                self.dismiss(animated: true)
+            }
             viewController.modalPresentationStyle = .fullScreen
             present(viewController, animated: true, completion: nil)
         }

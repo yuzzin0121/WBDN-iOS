@@ -95,17 +95,21 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         setup()
 
+        applyGradientBackground()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
         Task {
             let response = try await NetworkService.shared.request(.getPosts, type: BaseResponse<PostListResDto>.self)
 
             guard let posts = response.result?.postListDtos else { return }
 
+            print(posts)
+
             await MainActor.run {
                 applySnapshot(with: posts)
             }
         }
-
-        applyGradientBackground()
     }
 
     // MARK: - Public
@@ -242,21 +246,13 @@ extension HomeViewController: PinterestLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return .zero }
-        return item.ratio
-        // guard let url = URL(string: item.photoUrl) else { return .zero }
-
-        // let image = KFImage(url)
-
-        // let photoRatio = item.size.width / item.size.height
-        // let cellWidth: CGFloat = (view.bounds.width - 4) / 2 // 셀 가로 크기
-        // return cellWidth * photoRatio
-
+        let cellWidth: CGFloat = (view.bounds.width - 4) / 2
         // FIXME: 비율 실제 이미지 사이즈로 조정 필요...
-        // let randomRatio: [CGFloat] = [16 / 9, 9 / 16, 1, 4 / 3, 3 / 4]
-        // return randomRatio.randomElement()!
+        return item.ratio * cellWidth
     }
 
     private func heightForPhoto(at indexPath: IndexPath) -> CGFloat {
+        // FIXME: 비율 실제 이미지 사이즈로 조정 필요...
         // let imageRatio = image.size.height / image.size.width
         // let height = (view.frame.width / 2) * imageRatio
 
