@@ -8,9 +8,6 @@
 import Foundation
 
 struct CreatePostDto: Codable {
-    let contents: String
-    let photo: Data
-    
     let device: String
     let shutterSpeed: String?
     let editContents: String?

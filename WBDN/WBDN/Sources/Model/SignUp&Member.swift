@@ -13,9 +13,17 @@ struct SignUpDto: Codable {
     let nickname: String
 }
 
+struct SignUpResponse: Codable {
+    let memberId: Int
+}
+
 struct SignInDto: Codable {
     let loginId: String
     let password: String
+}
+
+struct SignInResponse: Codable {
+    let accessKey: String
 }
 
 struct Member: Codable {
