@@ -14,10 +14,6 @@
 		<string>Pretendard-ExtraLight.otf</string>
 		<string>Pretendard-ExtraBold.otf</string>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string></string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

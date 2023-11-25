@@ -33,7 +33,7 @@ class WelcomeViewController: UIViewController {
     // 로그인하러가기 버튼
     lazy var goLoginButton: UIButton = UIButton().then {
         
-        var titleAttr = AttributedString.init("로그인하러가기")
+        var titleAttr = AttributedString.init("로그인하러 가기")
         titleAttr.font = .pretendard(size: 17, weight: .semiBold)
 
         $0.configuration = .filled()
@@ -112,6 +112,9 @@ extension WelcomeViewController {
     
     @objc func goLogin() {
         print("go to Login")
+        let viewController = LoginViewController()
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: true, completion: nil)
     }
 
 }
