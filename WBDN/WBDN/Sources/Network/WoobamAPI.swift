@@ -10,11 +10,11 @@ import Foundation
 
 enum WoobamAPI {
     /// signUp:
-    /// 응답 타입: BaseResponse<SignUpDto>
+    /// 응답 타입: BaseResponse<SignUpResponse>
     case signUp(dto: SignUpDto)
 
     /// signIn:
-    /// 응답 타입: BaseResponse<SignInDto>
+    /// 응답 타입: BaseResponse<SignInResponse>
     case signIn(dto: SignInDto)
 
     /// getPosts:
@@ -23,15 +23,11 @@ enum WoobamAPI {
 
     /// createPost:
     /// 응답 타입: BaseResponse<CreatePostDto>
-    case createPost(dto: CreatePostDto)
-
-    /// findPostAll:
-    /// 응답 타입: BaseResponse<PostListResDto>
-    case findPostAll(member: Member)
+    case createPost(photo: Data, dto: CreatePostDto)
 
     /// saveLike:
     /// 응답 타입: BaseResponse<PostLikeResDto>
-    case saveLike(postId: Int, member: Member)
+    case saveLike(postId: Int)
 
     /// getComments:
     /// 응답 타입: BaseResponse<GetCommentsDto>
@@ -51,14 +47,16 @@ enum WoobamAPI {
 
     /// findPostDetail:
     /// 응답 타입: BaseResponse<PostDetailResDto>
-    case findPostDetail(postId: Int, member: Member)
+    case findPostDetail(postId: Int)
 
     /// deletePost, deleteReply, deleteComment:
     /// 응답 타입: BaseResponse<Void>
     case deletePost(postId: Int)
+
     /// deletePost, deleteReply, deleteComment:
     /// 응답 타입: BaseResponse<Void>
     case deleteReply(replyId: Int)
+    
     /// deletePost, deleteReply, deleteComment:
     /// 응답 타입: BaseResponse<Void>
     case deleteComment(commentId: Int)
@@ -77,9 +75,7 @@ extension WoobamAPI: TargetType {
             return "/api/posts"
         case .getPosts:
             return "/api/posts"
-        case .findPostAll:
-            return "/api/posts"
-        case .saveLike(let postId, _):
+        case .saveLike(let postId):
             return "/api/posts/\(postId)/likes"
         case .getComments(let postId):
             return "/api/posts/\(postId)/comments"
@@ -89,7 +85,7 @@ extension WoobamAPI: TargetType {
             return "/api/comments/\(commentId)/replies"
         case .postReply(let commentId, _):
             return "/api/comments/\(commentId)/replies"
-        case .findPostDetail(let postId, _):
+        case .findPostDetail(let postId):
             return "/api/posts/\(postId)"
         case .deletePost(let postId):
             return "/api/posts/\(postId)"
@@ -104,7 +100,7 @@ extension WoobamAPI: TargetType {
         switch self {
         case .signUp, .signIn, .createPost, .postComment, .postReply:
             return .post
-        case .findPostAll, .saveLike, .getComments, .getReplies, .findPostDetail, .getPosts:
+        case .saveLike, .getComments, .getReplies, .findPostDetail, .getPosts:
             return .get
         case .deletePost, .deleteReply, .deleteComment:
             return .delete
@@ -115,30 +111,43 @@ extension WoobamAPI: TargetType {
         switch self {
         case let .signUp(dto):
             return .requestJSONEncodable(dto)
+
         case let .signIn(dto):
             return .requestJSONEncodable(dto)
+
         case .getPosts:
             return .requestPlain
-        case let .createPost(dto):
+
+        case let .createPost(photoData, dto):
             var multipartData = [MultipartFormData]()
-            multipartData.append(MultipartFormData(provider: .data(dto.contents.data(using: .utf8)!), name: "contents"))
-            multipartData.append(MultipartFormData(provider: .data(dto.photo), name: "photo", fileName: "photo.jpg", mimeType: "image/jpeg"))
-            // 기타 필요한 멀티파트 데이터 추가
+            if let contentsData = try? JSONEncoder().encode(dto) {
+                if let contentsJSONString = String(data: contentsData, encoding: .utf8) {
+                    multipartData.append(
+                        MultipartFormData(provider: .data(contentsJSONString.data(using: .utf8)!), name: "contents")
+                    )
+                }
+            }
+            multipartData.append(MultipartFormData(provider: .data(photoData), name: "photo"))
             return .uploadMultipart(multipartData)
-        case let .findPostAll(member):
-            return .requestParameters(parameters: ["arg1": member], encoding: URLEncoding.queryString)
-        case let .saveLike(_, member):
-            return .requestParameters(parameters: ["arg1": member], encoding: URLEncoding.queryString)
-        case let .findPostDetail(_, member):
-            return .requestParameters(parameters: ["arg1": member], encoding: URLEncoding.queryString)
+
+        case .saveLike:
+            return .requestPlain
+
+        case .findPostDetail:
+            return .requestPlain
+
         case .getComments:
             return .requestPlain
+
         case let .postComment(postId, dto):
             return .requestCompositeParameters(bodyParameters: ["postId": postId], bodyEncoding: JSONEncoding.default, urlParameters: ["dto": dto])
+
         case .getReplies:
             return .requestPlain
+
         case let .postReply(commentId, dto):
             return .requestCompositeParameters(bodyParameters: ["commentId": commentId], bodyEncoding: JSONEncoding.default, urlParameters: ["dto": dto])
+
         case .deletePost, .deleteReply, .deleteComment:
             return .requestPlain
         }
