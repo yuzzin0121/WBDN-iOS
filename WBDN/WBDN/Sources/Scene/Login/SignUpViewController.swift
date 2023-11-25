@@ -428,6 +428,10 @@ class SignUpViewController: UIViewController {
 
 extension SignUpViewController: UITextFieldDelegate {
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     // 텍스트 필드의 값이 변경될 때마다 호출됩니다.
     func textFieldDidChangeSelection(_ textField: UITextField) {
         
