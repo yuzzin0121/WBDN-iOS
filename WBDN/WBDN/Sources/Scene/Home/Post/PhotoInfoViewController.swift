@@ -27,21 +27,23 @@ class PhotoInfoViewController: UIViewController {
         $0.sizeToFit()
     }
     
-    lazy var selectBtn = UIButton(primaryAction: nil).then {
-        $0.backgroundColor = .customLightNavy
-        $0.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
-        $0.contentHorizontalAlignment = .trailing
-        $0.setTitle(devices[0], for: .normal)
-        $0.setTitleColor(.white, for: .normal)
-        $0.setImage(UIImage(named: "down_arrow"), for: .normal)
-        $0.tintColor = .white
-        $0.semanticContentAttribute = .forceRightToLeft
-        $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 10)
-        $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: 82, bottom: 0, right: 0)
-        $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right:0)
-        $0.layer.cornerRadius = 16
-        $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner]
-    }
+    lazy var selectBtn: UIButton = {
+        var configuration = UIButton.Configuration.filled()
+        
+        var container = AttributeContainer()
+        container.font = .pretendard(size: 14, weight: .semiBold)
+        configuration.attributedTitle = AttributedString(devices[0], attributes: container)
+//        configuration.titleAlignment = .leading
+
+        configuration.background.cornerRadius = 16
+        configuration.baseBackgroundColor = .customLightNavy
+        let button = UIButton(configuration: configuration, primaryAction: nil)
+//        button.backgroundColor = .customLightNavy
+        button.setTitleColor(.white, for: .normal)
+        button.contentHorizontalAlignment = .leading
+        button.tintColor = .white
+        return button
+    }()
     
     lazy var addPhotoInfoLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
@@ -220,8 +222,9 @@ class PhotoInfoViewController: UIViewController {
         }
         
         nextButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().offset(47)
-            $0.leading.trailing.equalToSuperview().offset(16)
+            $0.bottom.equalToSuperview().offset(-47)
+            $0.leading.equalToSuperview().offset(16)
+            $0.trailing.equalToSuperview().offset(-16)
             $0.height.equalTo(55)
         }
     }
