@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 final class HomeViewController: UIViewController {
 
@@ -14,7 +15,7 @@ final class HomeViewController: UIViewController {
         case list
     }
 
-    typealias DataSource = UICollectionViewDiffableDataSource<Section, UIImage>
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, Post>
 
     // MARK: - Properties
 
@@ -94,24 +95,14 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         setup()
 
-        applySnapshot(with: [
-            UIImage(named: "test1")!,
-            UIImage(named: "test2")!,
-            UIImage(named: "test3")!,
-            UIImage(named: "test4")!,
-            UIImage(named: "test5")!,
-            UIImage(named: "test6")!,
-
-        ])
 
         Task {
-            do {
-                let response = try await NetworkService.shared.request(.getPosts, type: BaseResponse<PostListResDto>.self)
-                print(response)
-                let posts = response.result?.postListDtos
-                print("post?", posts)
-            } catch {
-                print("error", error)
+            let response = try await NetworkService.shared.request(.getPosts, type: BaseResponse<PostListResDto>.self)
+
+            guard let posts = response.result?.postListDtos else { return }
+
+            await MainActor.run {
+                applySnapshot(with: posts)
             }
         }
 
@@ -219,17 +210,17 @@ extension HomeViewController {
                     return UICollectionViewCell()
                 }
 
-                cell.configure(with: item, title: "ㅁㅁㅁㅁ~~")
+                cell.configure(with: item)
 
                 return cell
             }
         )
     }
 
-    private func applySnapshot(with images: [UIImage]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, UIImage>()
+    private func applySnapshot(with posts: [Post]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Post>()
         snapshot.appendSections([.list])
-        snapshot.appendItems(images, toSection: .list)
+        snapshot.appendItems(posts, toSection: .list)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
 }
@@ -252,15 +243,26 @@ extension HomeViewController: PinterestLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return .zero }
-        let photoRatio = item.size.width / item.size.height
-        let cellWidth: CGFloat = (view.bounds.width - 4) / 2 // 셀 가로 크기
-        return cellWidth * photoRatio
+        return item.ratio
+        // guard let url = URL(string: item.photoUrl) else { return .zero }
+
+        // let image = KFImage(url)
+
+        // let photoRatio = item.size.width / item.size.height
+        // let cellWidth: CGFloat = (view.bounds.width - 4) / 2 // 셀 가로 크기
+        // return cellWidth * photoRatio
+
+        // FIXME: 비율 실제 이미지 사이즈로 조정 필요...
+        // let randomRatio: [CGFloat] = [16 / 9, 9 / 16, 1, 4 / 3, 3 / 4]
+        // return randomRatio.randomElement()!
     }
 
     private func heightForPhoto(at indexPath: IndexPath) -> CGFloat {
-        guard let image = dataSource.itemIdentifier(for: indexPath) else { return 0 }
-        let imageRatio = image.size.height / image.size.width
-        let height = (view.frame.width / 2) * imageRatio
+        // let imageRatio = image.size.height / image.size.width
+        // let height = (view.frame.width / 2) * imageRatio
+
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return 0 }
+        let height = (view.frame.width / 2) * item.ratio
         return height
     }
 }

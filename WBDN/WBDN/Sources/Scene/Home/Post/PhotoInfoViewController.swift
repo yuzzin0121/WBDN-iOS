@@ -125,3 +125,8 @@ class PhotoInfoViewController: UIViewController {
         
     }
 }
+
+@available(iOS 17, *)
+#Preview(traits: .defaultLayout, body: {
+    PhotoInfoViewController()
+})
