@@ -177,7 +177,6 @@ final class DetailViewController: UIViewController {
 
         }
 
-        post.likes
         nicknameLabel.text = post.nickname
     }
 
