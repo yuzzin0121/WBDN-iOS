@@ -95,12 +95,12 @@ final class HomeViewController: UIViewController {
         setup()
 
         applySnapshot(with: [
-            UIImage(named: "test1")!,
-            UIImage(named: "test2")!,
-            UIImage(named: "test3")!,
-            UIImage(named: "test4")!,
-            UIImage(named: "test5")!,
-            UIImage(named: "test6")!,
+//            UIImage(named: "test1")!,
+//            UIImage(named: "test2")!,
+//            UIImage(named: "test3")!,
+//            UIImage(named: "test4")!,
+//            UIImage(named: "test5")!,
+//            UIImage(named: "test6")!,
 
         ])
 
@@ -119,7 +119,11 @@ final class HomeViewController: UIViewController {
     // MARK: - Actions
 
     @objc private func tappedFloatingButton() {
-        print("추가하는 컨트롤러로 이동")
+        let addImageViewController = AddImageViewController()
+        
+        // 탭바를 가리기 위해, Scene 단위의 navigation에서 이동
+        SceneDelegate.navigationController
+            .pushViewController(addImageViewController, animated: true)
     }
 }
 
@@ -137,7 +141,8 @@ extension HomeViewController {
     private func setupHeaderLayout() {
         view.addSubview(headerStackView)
         headerStackView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(10)
+            // make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(10)
+            make.top.equalToSuperview().offset(80)
             make.horizontalEdges.equalToSuperview().inset(16)
         }
 
@@ -184,6 +189,7 @@ extension HomeViewController {
 
         collectionView.collectionViewLayout = pinterestLayout
         pinterestLayout.delegate = self
+        collectionView.delegate = self
     }
 }
 
@@ -217,6 +223,18 @@ extension HomeViewController {
     }
 }
 
+// MARK: - UICollectionViewDelegate
+
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, 
+                        didSelectItemAt indexPath: IndexPath) {
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+        let detailViewController = DetailViewController()
+        // navigationController?.pushViewController(detailViewController, animated: true)
+        SceneDelegate.navigationController.pushViewController(detailViewController, animated: true)
+    }
+}
+
 // MARK: - PinterestLayoutDelegate
 
 extension HomeViewController: PinterestLayoutDelegate {
@@ -236,7 +254,7 @@ extension HomeViewController: PinterestLayoutDelegate {
     }
 }
 
-@available(iOS 17, *)
-#Preview(traits: .defaultLayout, body: {
-    HomeViewController()
-})
+//@available(iOS 17, *)
+//#Preview(traits: .defaultLayout, body: {
+//    HomeViewController()
+//})

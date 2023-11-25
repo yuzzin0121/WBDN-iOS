@@ -10,6 +10,10 @@ import Then
 import SnapKit
 
 class PhotoInfoViewController: UIViewController {
+    struct Constants {
+        static let cornerRadius: CGFloat = 16.0
+    }
+    
     // MARK: - Properties
     lazy var photoDeviceLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
@@ -23,42 +27,121 @@ class PhotoInfoViewController: UIViewController {
         $0.sizeToFit()
     }
     
-    lazy var selectBtn = UIButton(primaryAction: nil).then {
-        $0.backgroundColor = .customLightNavy
-        $0.titleLabel?.font = .systemFont(ofSize: 14)
-        $0.contentHorizontalAlignment = .trailing
-        $0.setTitle(devices[0], for: .normal)
-        $0.setTitleColor(.white, for: .normal)
-        $0.setImage(UIImage(named: "down_arrow"), for: .normal)
-        $0.tintColor = .white
-        $0.semanticContentAttribute = .forceRightToLeft
-        $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 100)
-        $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: 130, bottom: 0, right: 0)
-        $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right:0)
-        $0.layer.cornerRadius = 16
-        $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner]
-    }
+    lazy var selectBtn: UIButton = {
+        var configuration = UIButton.Configuration.filled()
+        
+        var container = AttributeContainer()
+        container.font = .pretendard(size: 14, weight: .semiBold)
+        configuration.attributedTitle = AttributedString(devices[0], attributes: container)
+//        configuration.titleAlignment = .leading
+
+        configuration.background.cornerRadius = 16
+        configuration.baseBackgroundColor = .customLightNavy
+        let button = UIButton(configuration: configuration, primaryAction: nil)
+//        button.backgroundColor = .customLightNavy
+        button.setTitleColor(.white, for: .normal)
+        button.contentHorizontalAlignment = .leading
+        button.tintColor = .white
+        return button
+    }()
     
     lazy var addPhotoInfoLabel = UILabel().then {
-        $0.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
-        $0.text = "촬영 기기를 선택해주세요! *"
+        $0.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        $0.text = "추가 촬영정보가 있다면 입력해주세요! (선택)"
         $0.textColor = .white
+    }
+    
+    lazy var isoLabel = UILabel().then {
+        $0.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        $0.text = "ISO"
+        $0.textColor = .customLightGray2
+    }
+    
+    lazy var speedLabel = UILabel().then {
+        $0.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        $0.text = "셔터 스피드"
+        $0.textColor = .customLightGray2
+    }
+    
+    lazy var apertureLabel = UILabel().then {
+        $0.font = .pretendard(size: 20, weight: .semiBold)
+        $0.text = "조리개 값"
+        $0.textColor = .customLightGray2
+    }
+    
+    lazy var isoTextField = UITextField().then {
+        $0.textColor = .customLightGray3
+        $0.font = .pretendard(size: 14, weight: .medium)
+        // Placeholder 텍스트 속성 설정
+        let placeholderText = "ex) 640"
+        let attributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor.customLightGray3,
+        ]
+
+        let attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+        $0.autocorrectionType = .no
+        $0.attributedPlaceholder = attributedPlaceholder
+        $0.backgroundColor = .customLightNavy
+        $0.returnKeyType = .next
+        $0.leftViewMode = .always
+        $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
+        $0.layer.masksToBounds = true
+        $0.layer.cornerRadius = Constants.cornerRadius
+    }
+    
+    lazy var speedTextField = UITextField().then {
+        $0.textColor = .customLightGray3
+        $0.font = .pretendard(size: 14, weight: .medium)
+        // Placeholder 텍스트 속성 설정
+        let placeholderText = "ex) 1/8 s"
+        let attributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor.customLightGray3,
+        ]
+
+        let attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+        $0.autocorrectionType = .no
+        $0.attributedPlaceholder = attributedPlaceholder
+        $0.backgroundColor = .customLightNavy
+        $0.returnKeyType = .next
+        $0.leftViewMode = .always
+        $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
+        $0.layer.masksToBounds = true
+        $0.layer.cornerRadius = Constants.cornerRadius
+    }
+    
+    lazy var apertureTextField = UITextField().then {
+        $0.textColor = .customLightGray3
+        $0.font = .pretendard(size: 14, weight: .medium)
+        // Placeholder 텍스트 속성 설정
+        let placeholderText = "ex) f 1.8"
+        let attributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor.customLightGray3,
+        ]
+
+        let attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+        $0.autocorrectionType = .no
+        $0.attributedPlaceholder = attributedPlaceholder
+        $0.backgroundColor = .customLightNavy
+        $0.returnKeyType = .next
+        $0.leftViewMode = .always
+        $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
+        $0.layer.masksToBounds = true
+        $0.layer.cornerRadius = Constants.cornerRadius
+    }
+    
+    lazy var nextButton = UIButton().then {
+        $0.backgroundColor = .customYellow
+        $0.titleLabel?.font = .pretendard(size: 17, weight: .semiBold)
+        $0.setTitle("다음", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
         
-        let attributedString = NSMutableAttributedString(string: $0.text!)
-        attributedString.addAttribute(.foregroundColor, value: UIColor.customRed, range: ($0.text! as NSString).range(of: "*"))
-        
-        $0.attributedText = attributedString
-        $0.sizeToFit()
+        $0.layer.cornerRadius = 16
+        $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner]
     }
     
     var menuChildren: [UIMenuElement] = []
     
     let devices = ["DSLR / 미러리스", "Android 기기", "기타 기기", "iPhone 15 Pro", "iPhone 15", "iPhone 15 Plus", "iPhone 14 Pro Max"]
-    
-//    lazy var actionClosure = { (action: UIAction) in
-//        print(action.title)
-//        self.selectBtn.setTitle(action.title, for: .normal)
-//    }
 
     // MARK: - viewDidLoad()
     override func viewDidLoad() {
@@ -68,8 +151,7 @@ class PhotoInfoViewController: UIViewController {
         setUpConstraint()
         setDeviceData()
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selectBtnDidTap(_:)))
-        selectBtn.addGestureRecognizer(tapGesture)
+        
     }
     
     // MARK: - View
@@ -79,7 +161,7 @@ class PhotoInfoViewController: UIViewController {
     
     // MARK: - Layout
     func setUpLayout() {
-        [photoDeviceLabel, selectBtn].forEach {
+        [photoDeviceLabel, selectBtn, addPhotoInfoLabel, isoLabel, speedLabel, apertureLabel, isoTextField, speedTextField, apertureLabel, apertureTextField, nextButton].forEach {
             self.view.addSubview($0)
         }
     }
@@ -95,11 +177,63 @@ class PhotoInfoViewController: UIViewController {
         selectBtn.snp.makeConstraints {
             $0.top.equalTo(photoDeviceLabel.snp.bottom).offset(20)
             $0.leading.equalTo(16)
-            $0.width.equalTo(250)
+            $0.width.equalTo(200)
             $0.height.equalTo(38)
         }
         
+        addPhotoInfoLabel.snp.makeConstraints {
+            $0.top.equalTo(selectBtn.snp.bottom).offset(28)
+            $0.leading.equalToSuperview().offset(16)
+        }
         
+        isoLabel.snp.makeConstraints {
+            $0.top.equalTo(addPhotoInfoLabel.snp.bottom).offset(16)
+            $0.leading.equalToSuperview().offset(16)
+        }
+        
+        isoTextField.snp.makeConstraints {
+            $0.top.equalTo(isoLabel.snp.bottom).offset(4)
+            $0.leading.equalToSuperview().offset(16)
+            $0.width.equalTo(self.view.bounds.width * 0.4)
+            $0.height.equalTo(42)
+        }
+        
+        speedLabel.snp.makeConstraints {
+            $0.top.equalTo(isoTextField.snp.bottom).offset(15)
+            $0.leading.equalToSuperview().offset(16)
+        }
+        
+        speedTextField.snp.makeConstraints {
+            $0.top.equalTo(speedLabel.snp.bottom).offset(4)
+            $0.leading.equalToSuperview().offset(16)
+            $0.width.equalTo(self.view.bounds.width * 0.4)
+            $0.height.equalTo(42)
+        }
+        
+        apertureLabel.snp.makeConstraints {
+            $0.top.equalTo(speedTextField.snp.bottom).offset(15)
+            $0.leading.equalToSuperview().offset(16)
+        }
+        apertureTextField.snp.makeConstraints {
+            $0.top.equalTo(apertureLabel.snp.bottom).offset(4)
+            $0.leading.equalToSuperview().offset(16)
+            $0.width.equalTo(self.view.bounds.width * 0.4)
+            $0.height.equalTo(42)
+        }
+        
+        nextButton.snp.makeConstraints {
+            $0.bottom.equalToSuperview().offset(-47)
+            $0.leading.equalToSuperview().offset(16)
+            $0.trailing.equalToSuperview().offset(-16)
+            $0.height.equalTo(55)
+        }
+    }
+    
+    // MARK: - Delegate
+    func setUpDelegate() {
+        isoTextField.delegate = self
+        speedTextField.delegate = self
+        apertureTextField.delegate = self
     }
     
     // MARK: - Set Data
@@ -121,7 +255,25 @@ class PhotoInfoViewController: UIViewController {
     }
 
     // MARK: - Button Tap
-    @objc func selectBtnDidTap(_ gesture: UITapGestureRecognizer) {
-        
+    @objc func didTapNextButton() {
+        isoTextField.resignFirstResponder()
+        speedTextField.resignFirstResponder()
+        apertureTextField.resignFirstResponder()
     }
+}
+
+extension PhotoInfoViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == isoTextField {
+            speedTextField.becomeFirstResponder()
+        }
+        else if textField == speedTextField {
+            apertureTextField.becomeFirstResponder()
+        }
+        else if textField == apertureTextField {
+            didTapNextButton()
+        }
+        return true
+    }
+   
 }

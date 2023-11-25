@@ -27,7 +27,7 @@ class WelcomeViewController: UIViewController {
     
     // 팡파레 이미지
     lazy var welcomeImage: UIImageView = UIImageView().then {
-        $0.image = UIImage(resource: .congrat)
+        $0.image = .congrat
     }
     
     // 로그인하러가기 버튼
@@ -120,10 +120,10 @@ extension WelcomeViewController {
 }
 
 // Preview Code
-@available(iOS 17.0, *)
-#Preview("WelcomeViewController") {
-    WelcomeViewController()
-}
+//@available(iOS 17.0, *)
+//#Preview("WelcomeViewController") {
+//    WelcomeViewController()
+//}
 
 
 

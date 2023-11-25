@@ -20,7 +20,7 @@ class SignUpViewController: UIViewController {
     }
     
     lazy var image1: UIImageView = UIImageView().then {
-        $0.image = UIImage(resource: .yelloStar)
+        $0.image = UIImage.yelloStar
         $0.tintColor = .yellow
     }
     
@@ -84,7 +84,7 @@ class SignUpViewController: UIViewController {
     }
     
     lazy var image2: UIImageView = UIImageView().then {
-        $0.image = UIImage(resource: .yelloStar)
+        $0.image = UIImage.yelloStar
     }
     
     lazy var image2Label: UILabel = UILabel().then {
@@ -166,7 +166,7 @@ class SignUpViewController: UIViewController {
     }
     
     lazy var image3: UIImageView = UIImageView().then {
-        $0.image = UIImage(resource: .yelloStar)
+        $0.image = UIImage.yelloStar
     }
     
     lazy var image3Label: UILabel = UILabel().then {
@@ -469,10 +469,10 @@ extension SignUpViewController: UITextFieldDelegate {
 }
 
 // Preview Code
-@available(iOS 17.0, *)
-#Preview("SignUpViewController") {
-    SignUpViewController()
-}
+//@available(iOS 17.0, *)
+//#Preview("SignUpViewController") {
+//    SignUpViewController()
+//}
 
 
 

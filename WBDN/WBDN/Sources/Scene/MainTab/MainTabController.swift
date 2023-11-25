@@ -30,6 +30,7 @@ final class MainTabController: UITabBarController {
         setupTabBarRadius()
         setupTabBarShadow()
         configureViewControllers()
+        selectedIndex = 1
     }
 
     private func setupTabBarRadius() {
@@ -60,7 +61,7 @@ final class MainTabController: UITabBarController {
             viewController: UserViewController()
         )
 
-        viewControllers = [homeNavigation, mapNavigation, userNavigation]
+        viewControllers = [mapNavigation, homeNavigation, userNavigation]
     }
 
     private func navigationController(
@@ -69,7 +70,10 @@ final class MainTabController: UITabBarController {
     ) -> UINavigationController {
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.tabBarItem.image = image
-        // navigationController.navigationBar.tintColor = .brown // TODO: 색상 변경
+        navigationController.navigationBar.tintColor = .white
+        navigationController.navigationBar.prefersLargeTitles = false
+        navigationController.navigationBar.topItem?.backButtonTitle = ""
+        viewController.navigationItem.backButtonTitle = ""
         return navigationController
     }
 }
