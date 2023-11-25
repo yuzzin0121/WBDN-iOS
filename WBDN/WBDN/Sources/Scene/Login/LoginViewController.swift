@@ -12,12 +12,9 @@ import Then
 
 class LoginViewController: UIViewController {
     
-    // "우리의 밤은 당신의 낮보다 아름답다" 라벨
-    lazy var titleLabel: UILabel = UILabel().then {
-        $0.text = "우리의 밤은 당신의 낮보다 아름답다"
-        $0.textColor = UIColor.white // 색 수정 필요
-        $0.numberOfLines = 3
-//        secondLabel.font = UIFont.systemFont(ofSize: 21, weight: .semibold)
+    // "우리의 밤은 당신의 낮보다 아름답다" 이미지
+    lazy var loginImage: UIImageView = UIImageView().then {
+        $0.image = UIImage(named: "login_image")
     }
     
     // ID 텍스트필드
@@ -25,8 +22,9 @@ class LoginViewController: UIViewController {
         $0.placeholder = "아이디"
         $0.layer.cornerRadius = 30
         $0.clipsToBounds = true
-        $0.backgroundColor = UIColor.white // 색 수정 필요
-        $0.font = UIFont.systemFont(ofSize: 15)
+        $0.backgroundColor = UIColor.white 
+        $0.textColor = UIColor.customGray
+        $0.font = UIFont.pretendard(size: 15, weight: .medium)
         
         // 좌우 여백 설정
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 10))
@@ -45,7 +43,8 @@ class LoginViewController: UIViewController {
         $0.clipsToBounds = true
         $0.backgroundColor = UIColor.white // 색 수정 필요
         $0.isSecureTextEntry = true // 비밀번호 **** 표시
-        $0.font = UIFont.systemFont(ofSize: 15)
+        $0.textColor = UIColor.customGray
+        $0.font = UIFont.pretendard(size: 15, weight: .medium)
         
         // 좌우 여백 설정
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 10))
@@ -61,12 +60,12 @@ class LoginViewController: UIViewController {
     lazy var loginButton: UIButton = UIButton().then {
         
         var titleAttr = AttributedString.init("로그인")
-        titleAttr.font = UIFont.systemFont(ofSize: 17)
+        titleAttr.font = UIFont.pretendard(size: 17, weight: .semiBold)
 
         $0.configuration = .filled()
         $0.configuration?.attributedTitle = titleAttr
         $0.configuration?.baseForegroundColor = .black
-        $0.configuration?.baseBackgroundColor = .yellow
+        $0.configuration?.baseBackgroundColor = .customYellow
         $0.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20)
         
         $0.layer.cornerRadius = 30
@@ -77,13 +76,13 @@ class LoginViewController: UIViewController {
     lazy var notMemberYetLabel: UILabel = UILabel().then {
         $0.text = "아직 회원이 아니신가요?"
         $0.textColor = UIColor.white // 색 수정 필요
-        $0.font = UIFont.systemFont(ofSize: 13)
+        $0.font = UIFont.pretendard(size: 13, weight: .medium)
     }
     
     // 회원가입 버튼
     lazy var signUpButton: UIButton = UIButton().then {
         var titleAttr = AttributedString.init("회원가입")
-        titleAttr.font = UIFont.systemFont(ofSize: 13, weight: .heavy)
+        titleAttr.font = UIFont.pretendard(size: 13, weight: .bold)
 
         $0.configuration = .filled()
         $0.configuration?.attributedTitle = titleAttr
@@ -94,7 +93,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .black // 내가 추가한 부분
+        self.view.backgroundColor = .customNavy
         
         setUpView()
         setUpDelegate()
@@ -121,7 +120,7 @@ class LoginViewController: UIViewController {
     // MARK: addSubView
     private func setUpLayout() {
         [
-            titleLabel,
+            loginImage,
             idTextField,
             pwTextField,
             loginButton,
@@ -133,16 +132,16 @@ class LoginViewController: UIViewController {
     // MARK: setConstraint
     private func setUpConstraint() {
         
-        titleLabel.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.centerY.equalToSuperview().offset(-100)
+        loginImage.snp.makeConstraints {
+            $0.centerX.equalToSuperview().offset(-33)
+            $0.centerY.equalToSuperview().offset(-180)
         }
         
         idTextField.snp.makeConstraints {
             $0.height.equalTo(60)
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
-            $0.centerY.equalToSuperview().offset(100)
+            $0.centerY.equalToSuperview().offset(80)
         }
         
         pwTextField.snp.makeConstraints {

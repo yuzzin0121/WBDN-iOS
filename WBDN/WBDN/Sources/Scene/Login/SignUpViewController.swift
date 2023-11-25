@@ -15,34 +15,44 @@ class SignUpViewController: UIViewController {
     lazy var titleLabel: UILabel = UILabel().then {
         $0.text = "회원가입"
         $0.textColor = UIColor.white // 색 수정 필요
-        $0.font = .systemFont(ofSize: 25, weight: .heavy)
+//        $0.font = .systemFont(ofSize: 25, weight: .heavy)
+        $0.font = .pretendard(size: 21, weight: .semiBold)
     }
     
     lazy var image1: UIImageView = UIImageView().then {
-        $0.image = UIImage(systemName: "seal.fill")
+        $0.image = UIImage(resource: .yelloStar)
         $0.tintColor = .yellow
     }
     
     lazy var image1Label: UILabel = UILabel().then {
         $0.text = "1"
         $0.textColor = UIColor.black // 색 수정 필요
-        $0.font = .systemFont(ofSize: 20)
+        $0.font = .pretendard(size: 17, weight: .semiBold)
     }
     
     // "아이디" 라벨
     lazy var idLabel: UILabel = UILabel().then {
         $0.text = "아이디"
         $0.textColor = UIColor.white // 색 수정 필요
-        $0.font = .systemFont(ofSize: 20, weight: .heavy)
+        $0.font = .pretendard(size: 17, weight: .semiBold)
     }
     
     // ID 텍스트필드
     lazy var idTextField: UITextField = UITextField().then {
-        $0.placeholder = "아이디"
         $0.layer.cornerRadius = 10
         $0.clipsToBounds = true
-        $0.backgroundColor = UIColor.white // 색 수정 필요
-        $0.font = .systemFont(ofSize: 15)
+        $0.backgroundColor = .customMidGray
+        $0.textColor = .customLightGray
+        $0.font = .pretendard(size: 15, weight: .medium)
+        
+        // Placeholder 텍스트 속성 설정
+        let placeholderText = "아이디"
+        let attributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor.customLightGray,
+        ]
+
+        let attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+        $0.attributedPlaceholder = attributedPlaceholder
         
         // 좌우 여백 설정
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 10))
@@ -57,12 +67,12 @@ class SignUpViewController: UIViewController {
     // id 중복확인 버튼
     lazy var idDupCheckButton: UIButton = UIButton().then {
         var titleAttr = AttributedString.init("중복확인")
-        titleAttr.font = UIFont.systemFont(ofSize: 17)
+        titleAttr.font = .pretendard(size: 17, weight: .semiBold)
 
         $0.configuration = .filled()
         $0.configuration?.attributedTitle = titleAttr
         $0.configuration?.baseForegroundColor = .black
-        $0.configuration?.baseBackgroundColor = .yellow
+        $0.configuration?.baseBackgroundColor = .customYellow
         $0.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
     }
     
@@ -70,36 +80,44 @@ class SignUpViewController: UIViewController {
     lazy var idWarnLabel: UILabel = UILabel().then {
         $0.text = "한글/영문/숫자 중 조합하여 2자~20자 입력"
         $0.textColor = UIColor.white // 색 수정 필요
-        $0.font = .systemFont(ofSize: 11)
+        $0.font = .pretendard(size: 11, weight: .regular)
     }
     
     lazy var image2: UIImageView = UIImageView().then {
-        $0.image = UIImage(systemName: "seal.fill")
-        $0.tintColor = .yellow
+        $0.image = UIImage(resource: .yelloStar)
     }
     
     lazy var image2Label: UILabel = UILabel().then {
         $0.text = "2"
         $0.textColor = UIColor.black // 색 수정 필요
-        $0.font = .systemFont(ofSize: 20)
+        $0.font = .pretendard(size: 17, weight: .semiBold)
     }
     
     // "비밀번호" 라벨
     lazy var pwLabel: UILabel = UILabel().then {
         $0.text = "비밀번호"
         $0.textColor = UIColor.white // 색 수정 필요
-        $0.font = .systemFont(ofSize: 20, weight: .heavy)
+        $0.font = .pretendard(size: 17, weight: .semiBold)
     }
     
     
     // PW 텍스트필드
     lazy var pwTextField: UITextField = UITextField().then {
-        $0.placeholder = "비밀번호"
         $0.layer.cornerRadius = 10
         $0.clipsToBounds = true
-        $0.backgroundColor = UIColor.white // 색 수정 필요
         $0.isSecureTextEntry = true // 비밀번호 **** 표시
-        $0.font = .systemFont(ofSize: 15)
+        $0.backgroundColor = .customMidGray
+        $0.textColor = .customLightGray
+        $0.font = .pretendard(size: 15, weight: .medium)
+        
+        // Placeholder 텍스트 속성 설정
+        let placeholderText = "비밀번호"
+        let attributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor.customLightGray,
+        ]
+
+        let attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+        $0.attributedPlaceholder = attributedPlaceholder
         
         // 좌우 여백 설정
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 10))
@@ -113,12 +131,22 @@ class SignUpViewController: UIViewController {
     
     // PW 확인 텍스트필드
     lazy var pwCheckTextField: UITextField = UITextField().then {
-        $0.placeholder = "비밀번호 확인"
         $0.layer.cornerRadius = 10
         $0.clipsToBounds = true
         $0.backgroundColor = UIColor.white // 색 수정 필요
         $0.isSecureTextEntry = true // 비밀번호 **** 표시
-        $0.font = .systemFont(ofSize: 15)
+        $0.backgroundColor = .customMidGray
+        $0.textColor = .customLightGray
+        $0.font = .pretendard(size: 15, weight: .medium)
+        
+        // Placeholder 텍스트 속성 설정
+        let placeholderText = "비밀번호 확인"
+        let attributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor.customLightGray,
+        ]
+
+        let attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+        $0.attributedPlaceholder = attributedPlaceholder
         
         // 좌우 여백 설정
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 10))
@@ -138,30 +166,38 @@ class SignUpViewController: UIViewController {
     }
     
     lazy var image3: UIImageView = UIImageView().then {
-        $0.image = UIImage(systemName: "seal.fill")
-        $0.tintColor = .yellow
+        $0.image = UIImage(resource: .yelloStar)
     }
     
     lazy var image3Label: UILabel = UILabel().then {
         $0.text = "3"
         $0.textColor = UIColor.black // 색 수정 필요
-        $0.font = .systemFont(ofSize: 20)
+        $0.font = .pretendard(size: 17, weight: .semiBold)
     }
     
     // "닉네임" 라벨
     lazy var nickNameLabel: UILabel = UILabel().then {
         $0.text = "닉네임"
         $0.textColor = UIColor.white // 색 수정 필요
-        $0.font = .systemFont(ofSize: 20, weight: .heavy)
+        $0.font = .pretendard(size: 17, weight: .semiBold)
     }
     
     // 닉네임 텍스트필드
     lazy var nickNameTextField: UITextField = UITextField().then {
-        $0.placeholder = "닉네임"
         $0.layer.cornerRadius = 10
         $0.clipsToBounds = true
-        $0.backgroundColor = UIColor.white // 색 수정 필요
-        $0.font = .systemFont(ofSize: 15)
+        $0.backgroundColor = .customMidGray
+        $0.textColor = .customLightGray
+        $0.font = .pretendard(size: 15, weight: .medium)
+        
+        // Placeholder 텍스트 속성 설정
+        let placeholderText = "닉네임"
+        let attributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor.customLightGray,
+        ]
+
+        let attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+        $0.attributedPlaceholder = attributedPlaceholder
         
         // 좌우 여백 설정
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 10))
@@ -176,12 +212,12 @@ class SignUpViewController: UIViewController {
     // 닉네임 중복확인 버튼
     lazy var nickNameDupCheckButton: UIButton = UIButton().then {
         var titleAttr = AttributedString.init("중복확인")
-        titleAttr.font = UIFont.systemFont(ofSize: 17)
+        titleAttr.font = .pretendard(size: 17, weight: .semiBold)
 
         $0.configuration = .filled()
         $0.configuration?.attributedTitle = titleAttr
         $0.configuration?.baseForegroundColor = .black
-        $0.configuration?.baseBackgroundColor = .yellow
+        $0.configuration?.baseBackgroundColor = .customYellow
         $0.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
     }
     
@@ -189,19 +225,19 @@ class SignUpViewController: UIViewController {
     lazy var nickNameWarnLabel: UILabel = UILabel().then {
         $0.text = "한글/영문/숫자 중 조합하여 2자~20자 입력"
         $0.textColor = UIColor.white // 색 수정 필요
-        $0.font = .systemFont(ofSize: 11)
+        $0.font = .pretendard(size: 11, weight: .regular)
     }
     
     // 회원가입 버튼
     lazy var signUpButton: UIButton = UIButton().then {
         
         var titleAttr = AttributedString.init("회원가입")
-        titleAttr.font = UIFont.systemFont(ofSize: 17)
+        titleAttr.font = .pretendard(size: 17, weight: .semiBold)
 
         $0.configuration = .filled()
         $0.configuration?.attributedTitle = titleAttr
         $0.configuration?.baseForegroundColor = .black
-        $0.configuration?.baseBackgroundColor = .yellow
+        $0.configuration?.baseBackgroundColor = .customYellow
         $0.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20)
         
         $0.layer.cornerRadius = 25
@@ -210,7 +246,7 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .black // 내가 추가한 부분
+        self.view.backgroundColor = .customNavy
         
         setUpView()
         setUpDelegate()
@@ -401,7 +437,7 @@ extension SignUpViewController: UITextFieldDelegate {
         }
         else if self.pwTextField.text == self.pwCheckTextField.text {
             print("비밀번호 일치")
-            self.pwWarnLabel.textColor = .yellow
+            self.pwWarnLabel.textColor = .customYellow
             self.pwWarnLabel.text = "비밀번호가 일치합니다."
         }
         else {

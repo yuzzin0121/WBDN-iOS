@@ -15,32 +15,31 @@ class WelcomeViewController: UIViewController {
     lazy var titleLabel: UILabel = UILabel().then {
         $0.text = "환영합니다!"
         $0.textColor = UIColor.white // 색 수정 필요
-        $0.font = .systemFont(ofSize: 25, weight: .heavy)
+        $0.font = .pretendard(size: 25, weight: .semiBold)
     }
     
     // "이제 다양한 밤하늘을 즐겨보세요" 라벨
     lazy var subTitleLabel: UILabel = UILabel().then {
         $0.text = "이제 다양한 밤하늘을 즐겨보세요"
-        $0.textColor = UIColor.yellow // 색 수정 필요
-        $0.font = .systemFont(ofSize: 17)
+        $0.textColor = .customYellow // 색 수정 필요
+        $0.font = .pretendard(size: 17, weight: .medium)
     }
     
     // 팡파레 이미지
     lazy var welcomeImage: UIImageView = UIImageView().then {
-        $0.image = UIImage(systemName: "seal.fill")
-        $0.tintColor = .yellow
+        $0.image = UIImage(resource: .congrat)
     }
     
     // 로그인하러가기 버튼
     lazy var goLoginButton: UIButton = UIButton().then {
         
         var titleAttr = AttributedString.init("로그인하러가기")
-        titleAttr.font = UIFont.systemFont(ofSize: 17)
+        titleAttr.font = .pretendard(size: 17, weight: .semiBold)
 
         $0.configuration = .filled()
         $0.configuration?.attributedTitle = titleAttr
         $0.configuration?.baseForegroundColor = .black
-        $0.configuration?.baseBackgroundColor = .yellow
+        $0.configuration?.baseBackgroundColor = .customYellow
         $0.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20)
         
         $0.layer.cornerRadius = 25
@@ -49,7 +48,7 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .black // 내가 추가한 부분
+        self.view.backgroundColor = .customNavy // 내가 추가한 부분
         
         setUpView()
         setUpDelegate()
