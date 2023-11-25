@@ -18,6 +18,12 @@ final class MainTabController: UITabBarController {
         setupTabBar()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tabBar.frame.size.height = 110
+        tabBar.frame.origin.y = view.frame.height - 90  
+    }
+
     // MARK: - Setup
 
     private func setupTabBar() {
@@ -29,7 +35,7 @@ final class MainTabController: UITabBarController {
     private func setupTabBarRadius() {
         tabBar.tintColor = .blue
         tabBar.backgroundColor = .brown
-        tabBar.layer.cornerRadius = tabBar.frame.height * 0.41
+        tabBar.layer.cornerRadius = tabBar.frame.height * 0.8
         tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
 
