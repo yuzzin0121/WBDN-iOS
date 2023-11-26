@@ -91,6 +91,7 @@ final class FeedCell: UICollectionViewCell {
         imageView.kf.setImage(with: url)
         print("포스트!!!", url)
         nicknameLabel.text = post.nickname
+        starCountLabel.text = "\(post.likes)"
     }
 }
 
