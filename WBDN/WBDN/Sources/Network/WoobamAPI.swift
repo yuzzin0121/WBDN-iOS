@@ -67,7 +67,7 @@ enum WoobamAPI {
 }
 
 extension WoobamAPI: TargetType {
-    var baseURL: URL { return URL(string: "http://13.125.18.63:8080/")! }
+    var baseURL: URL { return URL(string: "http://13.125.18.63:8080")! }
 
     var path: String {
         switch self {
