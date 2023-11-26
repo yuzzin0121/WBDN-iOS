@@ -12,8 +12,10 @@ class CustomAnnotation: NSObject, MKAnnotation {
     @objc dynamic var coordinate: CLLocationCoordinate2D
     
     var imageName: String?
+    var post: Post?
     
-    init(coordinate: CLLocationCoordinate2D) {
+    init(coordinate: CLLocationCoordinate2D, post: Post?) {
         self.coordinate = coordinate
+        self.post = post
     }
 }

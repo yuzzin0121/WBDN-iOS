@@ -51,7 +51,6 @@ class CustomAnnotationView: MKAnnotationView {
     // 뷰에 들어갈 값을 미리 설정
     override func prepareForDisplay() {
         super.prepareForDisplay()
-        print(#function)
         
         CustomAnnotationView.identifier = "CustomAnnotationView"
 

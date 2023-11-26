@@ -161,7 +161,7 @@ class MapViewController: UIViewController {
     
     // 사용자 위치 어노테이션 mapView에 추가
     private func addUserAnnotation(coordinate: CLLocationCoordinate2D) {
-        let annotation = CustomAnnotation(coordinate: coordinate)
+        let annotation = CustomAnnotation(coordinate: coordinate, post: nil)
         annotation.imageName = "pin"
         mapView.addAnnotation(annotation)
     }
@@ -171,7 +171,7 @@ class MapViewController: UIViewController {
         // annotation의 위치 설정
         
         postLocations.map { postLocation in
-            CustomAnnotation(coordinate: .init(latitude: postLocation.latitude, longitude: postLocation.longitude))
+            CustomAnnotation(coordinate: .init(latitude: postLocation.latitude, longitude: postLocation.longitude), post: .init(postId: postLocation.postId, nickname: postLocation.nickname, photoUrl: postLocation.photoUrl, likes: postLocation.likes))
         }.forEach { annotation in
             annotation.imageName = "pin"
             mapView.addAnnotation(annotation)
@@ -229,4 +229,15 @@ extension MapViewController: MKMapViewDelegate {
         return annotationView
     }
 
+    func mapView(_: MKMapView, didSelect: MKAnnotationView) {
+        guard let annotationView = didSelect as? CustomAnnotationView,
+              let annotation = annotationView.annotation as? CustomAnnotation,
+              let post = annotation.post else { return }
+          
+        let detailVC = DetailViewController()
+        detailVC.configure(post: post)
+        SceneDelegate.navigationController.pushViewController(detailVC, animated: true)
+
+        
+    }
 }

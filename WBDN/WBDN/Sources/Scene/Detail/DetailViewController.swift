@@ -440,7 +440,7 @@ final class DetailViewController: UIViewController {
 }
 
 
-@available(iOS 17, *)
-#Preview(traits: .defaultLayout, body: {
-   DetailViewController()
-})
+//@available(iOS 17, *)
+//#Preview(traits: .defaultLayout, body: {
+//   DetailViewController()
+//})
