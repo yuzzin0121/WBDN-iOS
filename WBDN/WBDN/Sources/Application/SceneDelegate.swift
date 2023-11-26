@@ -24,13 +24,15 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = Self.navigationController
         window.makeKeyAndVisible()
         Self.navigationController.navigationBar.topItem?.title = ""
-        
+        Self.navigationController.navigationBar.tintColor = .white
+
         guard let firstVC = Self.navigationController.viewControllers.first else  { return }
         let presentVC = LoginViewController()
         presentVC.modalPresentationStyle = .fullScreen
         firstVC.present(presentVC, animated: false)
 //        Self.navigationController.pushViewController(LoginViewController(), animated: false)
         
-        
+
+
     }
 }
