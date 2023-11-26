@@ -176,8 +176,6 @@ final class DetailViewController: UIViewController {
             }
 
         }
-
-        nicknameLabel.text = post.nickname
     }
 
     func configure(comments: [GetCommentDto]) {
