@@ -24,11 +24,6 @@
 **Pattern** -  MVC  <br>
 **Network** - Moya <br>
 **OpenSource** - SnapKit, Then, Kingfisher <br>
-**Etc** - MapKit, CoreLocation, CocoaPods <br>
+**Etc** - MapKit, CoreLocation <br>
 
 <br><br>
-
-## 기술 스택
-- **SnapKit**은 코드로 편리하게 UI를 구현할 수 있는 오픈소스이다.
-- Annotation을 커스텀하게 구현하여 원하는 이미지의 핀으로 보여줄 수 있다.
-- **Moya**는 Alomofire를 추상화하여 네트워킹 기능을 유지보수하는 데 용이하다.
